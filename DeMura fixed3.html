@@ -1,0 +1,2856 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DeMura — Светлый лазурный ресторан и кальянная</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-porcelain: #FAFBFD;
+    --bg-alabaster: #F2F6FC;
+    --bg-card: #FFFFFF;
+    --cobalt-ink: #122B66;
+    --cobalt-royal: #1F49A6;
+    --cobalt-glam: #2F66D8;
+    --cobalt-azure: #5286F2;
+    --cobalt-soft: #6E92CF;
+    --cobalt-mist: #E2ECFA;
+    --cobalt-line: #CEDDF4;
+    --disp: "Playfair Display", Georgia, serif;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Jost", system-ui, -apple-system, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--bg-porcelain);
+    color: var(--cobalt-ink);
+    font-family: var(--sans);
+    overflow-x: clip;
+    overscroll-behavior-y: none;
+  }
+
+  ::selection {
+    background-color: var(--cobalt-glam);
+    color: #FFFFFF;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-porcelain);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #A9C2EC;
+    border-radius: 999px;
+  }
+
+  /* =====================================================================
+     HAUTE-COUTURE HEADER & REFINED LUXURY BUTTONS
+  ====================================================================== */
+  .porcelain-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    background: rgba(250, 251, 253, 0.84);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(206, 221, 244, 0.75);
+    transition: background 0.35s ease, box-shadow 0.35s ease;
+  }
+  .porcelain-header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 34px -16px rgba(18, 43, 102, 0.12);
+  }
+
+  /* Refined Couture Primary Button */
+  .btn-couture-primary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #FFFFFF;
+    background: linear-gradient(135deg, #1E47A0 0%, #2F66D8 55%, #193B8A 100%);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow:
+      0 10px 26px -10px rgba(31, 73, 166, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, filter 0.28s ease;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .btn-couture-primary:hover {
+    transform: translateY(-1.5px);
+    filter: brightness(1.06);
+    box-shadow:
+      0 14px 32px -10px rgba(47, 102, 216, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+  .btn-couture-primary:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Refined Couture Secondary / Porcelain Button */
+  .btn-couture-glass {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 22px;
+    border-radius: 999px;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--cobalt-ink);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(47, 102, 216, 0.28);
+    box-shadow:
+      0 8px 22px -10px rgba(18, 43, 102, 0.12),
+      inset 0 1px 0 #FFFFFF;
+    transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+  }
+  .btn-couture-glass:hover {
+    background: #FFFFFF;
+    border-color: var(--cobalt-glam);
+    color: var(--cobalt-glam);
+    transform: translateY(-1.5px);
+    box-shadow: 0 12px 26px -10px rgba(47, 102, 216, 0.22);
+  }
+  .btn-couture-glass:active {
+    transform: scale(0.98);
+  }
+
+  /* =====================================================================
+     WELCOME 3D HERO WITH MOTION-SCROLL TRANSITION & STATIC LIGHT-AZURE TITLE
+  ====================================================================== */
+  .hero-scroll-wrapper {
+    position: relative;
+    height: 145svh;
+    width: 100%;
+  }
+
+  .hero-welcome-sticky {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    min-height: 580px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(circle at 50% 44%, #FFFFFF 0%, #F4F8FF 52%, #E8F0FC 100%);
+  }
+
+  #hero-arch-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Soft Pure-White Porcelain Backing Halo for Maximum Clarity */
+  .hero-glamour-halo {
+    position: absolute;
+    width: min(88vw, 840px);
+    height: min(48vw, 390px);
+    border-radius: 999px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.92) 45%, rgba(235, 243, 255, 0) 76%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .hero-title-centerpiece {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 0 16px;
+    user-select: none;
+    will-change: transform, opacity;
+  }
+
+  /* ===== DeMura wordmark: «De» — курсив светлой лазури, «Mura» — прямой кобальт.
+     Эмаль-градиент на каждой букве + бегущий по слову блик, как свет по глазурованному фарфору ===== */
+  .title-static-main {
+    font-family: var(--disp);
+    font-weight: 600;
+    font-size: clamp(68px, 18.5vw, 218px);
+    line-height: 1.04;
+    letter-spacing: 0.035em;
+    display: inline-block;
+    color: #2F66D8;
+    filter: drop-shadow(0 0.05em 0.07em rgba(24, 59, 140, 0.20)) drop-shadow(0 0.01em 0 rgba(255,255,255,.9));
+  }
+
+  .tl { display: inline-block; transform-origin: 50% 100%; will-change: transform, opacity, filter; }
+  .tl-in {
+    display: inline-block;
+    padding: 0.02em 0.045em 0.1em;
+    margin: 0 -0.045em;
+    color: #2F66D8;
+    background-image:
+      linear-gradient(180deg, rgba(255,255,255,0) 38%, rgba(12,32,84,.38) 100%),
+      linear-gradient(105deg, #183B8C 0%, #1F49A6 12%, #2F66D8 25%, #5E94F5 38%, #C4DAFF 46%, #FFFFFF 50%, #C4DAFF 54%, #5E94F5 62%, #2F66D8 75%, #1F49A6 88%, #183B8C 100%);
+    background-size: 100% 100%, 300% 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation:
+      tl-in 1.5s var(--rw-ease) both,
+      tl-glint 7.5s linear infinite;
+    animation-delay:
+      calc(var(--d) * 0.1s + 0.15s),
+      calc(var(--d) * 0.16s + 2.4s);
+  }
+  /* «De» — лёгкий курсив, светлее и воздушнее */
+  .tl:nth-child(-n+2) .tl-in {
+    font-style: italic;
+    font-weight: 400;
+    padding-right: 0.03em;
+    background-image:
+      linear-gradient(180deg, rgba(255,255,255,0) 40%, rgba(24,59,140,.30) 100%),
+      linear-gradient(105deg, #1F49A6 0%, #3B76F0 14%, #5E94F5 27%, #8FB6FF 38%, #D6E5FF 46%, #FFFFFF 50%, #D6E5FF 54%, #8FB6FF 62%, #5E94F5 73%, #3B76F0 86%, #1F49A6 100%);
+  }
+  @supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+    .tl-in { color: #2F66D8; -webkit-text-fill-color: currentColor; background: none; }
+  }
+  @keyframes tl-in {
+    from { opacity: 0; transform: translate3d(0, 46px, 0) rotateX(-50deg); filter: blur(14px); }
+    to   { opacity: 1; transform: none; filter: blur(0); }
+  }
+  @keyframes tl-glint {
+    0%, 38%  { background-position: 0 0, 100% 0; }
+    100%     { background-position: 0 0, 0% 0; }
+  }
+
+  /* Ornament: два штриха, роспись-«вензель» и восьмилучевая азулежу-звезда по центру */
+  .title-glamour-reflection {
+    width: clamp(230px, 50vw, 540px);
+    margin: clamp(2px, 0.8vw, 10px) auto 0;
+    line-height: 0;
+  }
+  .title-glamour-reflection svg { width: 100%; height: auto; overflow: visible; display: block; }
+  .orn-line { fill: none; stroke: #2F66D8; stroke-width: 1.7; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: orn-draw 1.8s var(--rw-ease) 1.5s forwards; }
+  .orn-line.soft { stroke: #6E92CF; stroke-width: 1.1; animation-delay: 1.75s; }
+  .orn-dot { fill: #2F66D8; opacity: 0; animation: orn-pop .9s var(--rw-ease) 2.5s forwards; transform-box: fill-box; transform-origin: center; }
+  .orn-star { transform-box: fill-box; transform-origin: center; opacity: 0; animation: orn-pop 1.1s var(--rw-ease-pop) 2.1s forwards, orn-spin 40s linear 3.2s infinite; }
+  @keyframes orn-draw { to { stroke-dashoffset: 0; } }
+  @keyframes orn-pop { from { opacity: 0; transform: scale(.2) rotate(-60deg); } to { opacity: 1; transform: none; } }
+  @keyframes orn-spin { to { transform: rotate(360deg); } }
+
+  .hero-scroll-wrapper { height: 185vh; height: 185svh; }
+  /* Описание выезжает «шторкой» поверх живой сцены — никакой пустой паузы */
+  #concept {
+    margin-top: -42vh; margin-top: -42svh;
+    padding: clamp(52px, 8vw, 96px) 16px clamp(64px, 9vw, 110px);
+    border-radius: 38px 38px 0 0;
+    box-shadow: 0 -28px 70px -28px rgba(18, 43, 102, 0.22), 0 -1px 0 rgba(206, 221, 244, 0.9);
+  }
+  @media (min-width: 640px) { #concept { padding-left: 32px; padding-right: 32px; border-radius: 52px 52px 0 0; } }
+  #concept::before {
+    content: ""; position: absolute; top: 14px; left: 50%; width: 44px; height: 3px;
+    transform: translateX(-50%); border-radius: 999px; background: var(--cobalt-line);
+  }
+  .hero-title-centerpiece { perspective: 900px; }
+  .hero-tagline {
+    margin-top: clamp(12px, 1.8vw, 20px);
+    display: flex; align-items: center; justify-content: center; gap: clamp(10px, 2vw, 20px);
+    font-family: var(--sans);
+    font-size: clamp(9px, 1.35vw, 12px);
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-indent: 0.26em;
+    text-transform: uppercase;
+    color: var(--cobalt-royal);
+    animation: tl-fade 1.6s var(--rw-ease) 2.2s both;
+  }
+  .hero-tagline::before, .hero-tagline::after {
+    content: ""; width: clamp(18px, 5vw, 56px); height: 1px; flex: none;
+    background: linear-gradient(90deg, transparent, var(--cobalt-glam));
+  }
+  .hero-tagline::after { transform: scaleX(-1); }
+  @media (min-width: 640px) { .hero-tagline { letter-spacing: 0.46em; text-indent: 0.46em; } }
+  @media (max-width: 519px) { .hero-tagline::before, .hero-tagline::after { display: none; } .hero-tagline { font-size: 9px; } }
+  @keyframes tl-fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .hero-flash {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(circle at 50% 52%, #FFFFFF 0%, #F2F7FF 45%, #FAFBFD 100%);
+  }
+
+  /* Photo colour grade: realistic shots pulled into the azure-porcelain palette */
+  .rw-photo-wrap {
+    background: linear-gradient(135deg, #E2ECFA, #CEDDF4, #E2ECFA);
+    background-size: 200% 200%;
+    animation: rw-shimmer 2.4s ease infinite;
+    isolation: isolate;
+  }
+  .rw-photo-wrap.is-ready { animation: none; }
+  /* внутренний слой с параллаксом: фото чуть шире рамки и «плывёт» медленнее карточки */
+  .rw-pan { position: absolute; top: 0; bottom: 0; left: -7%; right: -7%; will-change: transform; }
+  @keyframes rw-shimmer { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+  .rw-photo {
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity .9s var(--rw-ease), transform 1.6s var(--rw-ease);
+    filter: saturate(1.06) contrast(1.05);
+  }
+  .rw-photo.is-loaded { opacity: 1; transform: scale(1); }
+  /* цветокор без blend-режимов — они заставляли браузер пересчитывать композицию на каждом кадре */
+  .rw-grade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(165deg, rgba(82,134,242,.20) 0%, rgba(47,102,216,.07) 48%, rgba(18,43,102,.22) 100%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tl-in, .hero-tagline, .orn-line, .orn-dot, .orn-star { animation: none; }
+    .orn-line { stroke-dashoffset: 0; } .orn-dot, .orn-star { opacity: 1; }
+    .tl-in { background-position: 0 0, 100% 0; }
+    .rw-photo { transition: none; }
+    .rw-photo-wrap { animation: none; }
+  }
+
+  /* =====================================================================
+     REFINED EDITORIAL CONCEPT SECTION
+  ====================================================================== */
+  .concept-pillar {
+    position: relative;
+    padding-top: 18px;
+    border-top: 1px solid var(--cobalt-line);
+  }
+  .concept-pillar::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 36px;
+    height: 2px;
+    background: var(--cobalt-glam);
+  }
+
+  /* Motion Scroll Reveal Utility */
+  .reveal-block {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal-block.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* =====================================================================
+     RUNWAY-RING MOTION ENGINE (critically damped spring, depth ring)
+  ====================================================================== */
+  :root {
+    --rw-ease: cubic-bezier(.16, 1, .3, 1);
+    --rw-ease-silk: cubic-bezier(.65, 0, .35, 1);
+    --rw-ease-pop: cubic-bezier(.2, 1.6, .4, 1);
+  }
+  .carousel-3d-stage {
+    position: relative;
+    width: 100%;
+    height: 510px;
+    overflow: hidden;
+    isolation: isolate;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: pan-y;
+    cursor: grab;
+    contain: layout style;
+    outline: none;
+  }
+  .carousel-3d-stage:active { cursor: grabbing; }
+  .carousel-3d-stage:focus-visible { box-shadow: inset 0 0 0 2px var(--cobalt-glam); }
+
+  .carousel-3d-track {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.1s var(--rw-ease) .05s;
+  }
+  .carousel-3d-stage.is-revealed .carousel-3d-track { opacity: 1; }
+
+  .rw-body {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform-origin: 50% 100%;
+    opacity: 0;
+    will-change: transform, opacity;
+    cursor: pointer;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .carousel-3d-stage.is-still .rw-body,
+  .carousel-3d-stage.is-still .rw-pan { will-change: auto; }
+
+  .rw-shadow {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 130%;
+    height: 9%;
+    min-height: 14px;
+    max-height: 46px;
+    transform: translate(-50%, 50%);
+    pointer-events: none;
+    background: radial-gradient(closest-side, rgba(18,43,102,.26), rgba(18,43,102,.12) 45%, rgba(18,43,102,.04) 75%, rgba(18,43,102,0));
+  }
+
+  .carousel-3d-slide {
+    position: absolute;
+    inset: 0;
+    border-radius: 26px;
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid rgba(169, 194, 236, 0.7);
+    box-shadow: 0 22px 48px -18px rgba(18, 43, 102, 0.15);
+    isolation: isolate;
+  }
+  /* рамка активной карточки — отдельный слой, который просто проявляется (без смены border-width → без дёрганья) */
+  .carousel-3d-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1.5px solid var(--cobalt-glam);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.35);
+    opacity: 0;
+    transition: opacity 0.7s var(--rw-ease);
+    pointer-events: none;
+    z-index: 5;
+  }
+  .carousel-3d-slide.is-front::after { opacity: 1; }
+  .rw-shadow { transition: opacity 0.7s var(--rw-ease); }
+
+  /* Light sweep across the stage on every look change */
+  .rw-sweep {
+    position: absolute;
+    inset: 0;
+    z-index: 2000;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .rw-sweep::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    bottom: -20%;
+    left: 0;
+    width: 42%;
+    opacity: 0;
+    transform: translateX(-130%) skewX(-12deg);
+    will-change: transform, opacity;
+    background: linear-gradient(100deg, transparent, rgb(255 255 255 / .10) 42%, rgb(255 255 255 / .30) 50%, rgb(255 255 255 / .10) 58%, transparent);
+  }
+  .carousel-3d-stage.is-sweep .rw-sweep::before { animation: rw-sweep 1.5s var(--rw-ease-silk); }
+  @keyframes rw-sweep {
+    0%   { transform: translateX(-130%) skewX(-12deg); opacity: 0; }
+    18%  { opacity: 1; }
+    100% { transform: translateX(330%) skewX(-12deg); opacity: 0; }
+  }
+
+  /* Segmented progress ticks + autoplay */
+  .carousel-progress-rail.rw-ticks {
+    width: auto;
+    height: auto;
+    min-width: 104px;
+    background: none;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .rw-tick {
+    flex: 0 1 14px;
+    min-width: 10px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    transition: flex-basis .8s cubic-bezier(.2, 1.25, .3, 1);
+  }
+  .rw-tick[aria-current="true"] { flex: 0 0 36px; }
+  .rw-tick-bar {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #DCE7F8;
+    transition: transform .5s var(--rw-ease);
+  }
+  .rw-tick:hover .rw-tick-bar { transform: scaleY(1.8); }
+  .rw-tick-bar i {
+    position: absolute;
+    inset: 0;
+    background: var(--rw-acc, #2F66D8);
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: .35;
+    transition: transform .6s var(--rw-ease), opacity .4s;
+  }
+  .rw-tick.is-past .rw-tick-bar i { transform: scaleX(1); }
+  .rw-tick[aria-current="true"] .rw-tick-bar i { opacity: 1; transition: opacity .4s; }
+  .rw-tick:focus-visible { outline: 2px solid var(--cobalt-glam); outline-offset: 2px; border-radius: 4px; }
+  .rw-auto .i-pause { display: none; }
+  .rw-auto.is-playing .i-pause { display: block; }
+  .rw-auto.is-playing .i-play { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .carousel-3d-track { transition: none; }
+    .rw-tick, .rw-tick-bar, .rw-tick-bar i { transition: none; }
+    .carousel-3d-stage.is-sweep .rw-sweep::before { animation: none; }
+  }
+
+  .slide-veil {
+    position: absolute;
+    inset: 0;
+    background: rgba(244, 248, 254, 0.92);
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 26px;
+  }
+
+  .tap-inspect-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--cobalt-ink);
+    border: 1px solid rgba(206, 221, 244, 0.9);
+    box-shadow: 0 6px 18px -6px rgba(18, 43, 102, 0.22);
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  }
+  .carousel-3d-slide:hover .tap-inspect-badge {
+    background: var(--cobalt-glam);
+    color: #FFFFFF;
+    border-color: var(--cobalt-glam);
+    transform: translateY(-1px);
+  }
+
+  .carousel-active-caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    min-height: 58px;
+  }
+
+  .carousel-luxury-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 6px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid var(--cobalt-line);
+    box-shadow: 0 12px 32px -14px rgba(18, 43, 102, 0.12);
+  }
+  .carousel-nav-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    background: #FFFFFF;
+    border: 1px solid rgba(169, 194, 236, 0.65);
+    color: var(--cobalt-ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+  }
+  .carousel-nav-btn:hover {
+    background: var(--cobalt-glam);
+    border-color: var(--cobalt-glam);
+    color: #FFFFFF;
+    transform: scale(1.05);
+  }
+  .carousel-nav-btn:active {
+    transform: scale(0.94);
+  }
+  .carousel-progress-rail {
+    width: 96px;
+    height: 2px;
+    border-radius: 999px;
+    background: #DCE7F8;
+    overflow: hidden;
+    position: relative;
+  }
+  .carousel-progress-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--cobalt-glam);
+    transition: width 0.38s cubic-bezier(0.22, 1, 0.36, 1), background 0.38s ease;
+  }
+
+  .azulejo-frame {
+    position: relative;
+    background: #FFFFFF;
+    border: 1.5px solid var(--cobalt-royal);
+    box-shadow: 0 26px 64px -22px rgba(18, 43, 102, 0.14);
+  }
+  .azulejo-frame::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 1px solid var(--cobalt-line);
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .azulejo-subtle-bg {
+    background-color: var(--bg-porcelain);
+    background-image: radial-gradient(rgba(47, 102, 216, 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .ing-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: var(--cobalt-ink);
+    background: #FFFFFF;
+    border: 1px solid var(--cobalt-line);
+    box-shadow: 0 2px 8px -4px rgba(18, 43, 102, 0.08);
+  }
+
+  /* =====================================================================
+     3D INTERACTIVE DETAIL INSPECTOR MODAL
+  ====================================================================== */
+  .detail-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    background: rgba(18, 43, 102, 0.36);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    opacity: 0;
+    pointer-events: none;
+    perspective: 1600px;
+    transition: opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .detail-modal-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .detail-modal-card {
+    width: 100%;
+    max-width: 850px;
+    max-height: 90svh;
+    overflow-y: auto;
+    border-radius: 28px;
+    background: #FFFFFF;
+    border: 1.5px solid var(--cobalt-royal);
+    box-shadow: 0 36px 90px -20px rgba(18, 43, 102, 0.28);
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-3d-stage {
+      height: 420px;
+    }
+    .porcelain-header {
+      background: rgba(250, 251, 253, 0.97);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+
+  /* ===== Форма брони: ровные поля, нативная дата без выпирания на iOS ===== */
+  #bookingForm label { min-width: 0; display: block; }
+  #bookingForm input, #bookingForm select {
+    display: block; width: 100%; min-width: 0; max-width: 100%;
+    height: 54px; line-height: 1.2; margin: 0;
+    -webkit-appearance: none; appearance: none;
+    border-radius: 14px; text-align: left;
+  }
+  #bookingForm select {
+    padding-right: 46px;
+    background-repeat: no-repeat; background-position: right 16px center; background-size: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232F66D8' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  }
+  #bookingForm input[type="date"] {
+    position: relative; padding-right: 46px;
+    background-repeat: no-repeat; background-position: right 16px center; background-size: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232F66D8' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3.5' y='5' width='17' height='15.5' rx='3'/%3E%3Cpath d='M3.5 10h17M8 3v4M16 3v4'/%3E%3C/svg%3E");
+  }
+  #bookingForm input[type="date"]::-webkit-date-and-time-value { text-align: left; margin: 0; min-height: 1.2em; display: block; }
+  #bookingForm input[type="date"]::-webkit-datetime-edit { padding: 0; }
+  #bookingForm input[type="date"]::-webkit-calendar-picker-indicator { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+  #bookingForm input:focus, #bookingForm select:focus { box-shadow: 0 0 0 4px rgba(47, 102, 216, 0.12); }
+  #bookingStatus:empty { display: none; }
+
+  /* Карточка брони: нижние лепестки больше не наезжают на текст */
+  .book-card { padding: 52px 22px 76px; }
+  @media (min-width: 640px) { .book-card { padding: 60px 56px 84px; } }
+  .book-card > svg.corner { position: absolute; width: 44px; height: 44px; pointer-events: none; }
+  .book-contacts { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+  @media (min-width: 640px) { .book-contacts { flex-direction: row; justify-content: space-between; text-align: left; } }
+
+  /* Плавная смена цвета ауры и точек (градиенты сами не анимируются, поэтому — @property) */
+  @property --aura { syntax: "<color>"; inherits: false; initial-value: #93C5FD; }
+  .soft-aura {
+    background: radial-gradient(circle, var(--aura), transparent 70%);
+    transition: --aura 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #intDot, #foodDot, #hookahDot { transition: background-color 0.7s ease; }
+  .carousel-active-caption > * { will-change: transform, opacity; }
+
+  /* Поверх всего: меньше движения — спокойнее */
+  @media (prefers-reduced-motion: reduce) {
+    #concept { margin-top: 0; }
+    .soft-aura, #intDot, #foodDot, #hookahDot, .carousel-3d-slide::after { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Shared SVG Symbols: Delft Porcelain Crest & Botanical Corner Flourishes -->
+<svg width="0" height="0" class="hidden" aria-hidden="true">
+  <defs>
+    <g id="azulejo-corner">
+      <path d="M4 52 C4 24, 24 4, 52 4" fill="none" stroke="#2F66D8" stroke-width="1.4" stroke-linecap="round"/>
+      <path d="M12 40 C16 26, 26 16, 40 12" fill="none" stroke="#6E92CF" stroke-width="1" stroke-linecap="round"/>
+      <path d="M18 18 C12 10, 22 6, 24 14 C22 18, 18 18, 18 18 Z" fill="#2F66D8"/>
+      <path d="M29 11 C27 4, 35 2, 36 9 C34 12, 29 11, 29 11 Z" fill="#5286F2"/>
+      <path d="M11 29 C4 27, 2 35, 9 36 C12 34, 11 29, 11 29 Z" fill="#5286F2"/>
+      <circle cx="22" cy="22" r="1.8" fill="#2F66D8"/>
+    </g>
+
+    <g id="delft-crest">
+      <circle cx="40" cy="40" r="36" fill="#1F49A6" stroke="#CEDDF4" stroke-width="2"/>
+      <circle cx="40" cy="40" r="31" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 3"/>
+      <path d="M40 12 L44 26 L58 22 L48 34 L62 40 L48 46 L58 58 L44 54 L40 68 L36 54 L22 58 L32 46 L18 40 L32 34 L22 22 L36 26 Z" fill="#2F66D8" stroke="#FFFFFF" stroke-width="1"/>
+      <circle cx="40" cy="40" r="10" fill="#FFFFFF"/>
+      <circle cx="40" cy="40" r="4.5" fill="#1F49A6"/>
+    </g>
+  </defs>
+</svg>
+
+<!-- Top Navigation Header -->
+<header class="porcelain-header" id="mainHeader">
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 h-18 sm:h-20 py-3 flex items-center justify-between gap-3">
+    <a href="#welcome" data-scroll class="flex items-center gap-3 group shrink-0">
+      <svg class="w-9 h-9 sm:w-10 sm:h-10 transition-transform duration-300 group-hover:scale-105 shrink-0" viewBox="0 0 80 80">
+        <use href="#delft-crest"/>
+      </svg>
+      <div>
+        <span class="font-bold text-xl sm:text-2xl tracking-tight text-[#122B66] block leading-none" style="font-family: var(--disp)">DeMura</span>
+        <span class="text-[9px] sm:text-[10px] uppercase tracking-[0.24em] text-[#6E92CF] block mt-1">Porcelain &amp; Azure</span>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-[0.18em] font-medium text-[#122B66]/75">
+      <a href="#concept" data-scroll class="hover:text-[#2F66D8] transition">О ресторане</a>
+      <a href="#interior-3d" data-scroll class="hover:text-[#2F66D8] transition">3D Залы</a>
+      <a href="#menu-3d" data-scroll class="hover:text-[#2F66D8] transition">Кухня</a>
+      <a href="#hookah-3d" data-scroll class="hover:text-[#2F66D8] transition">Кальяны</a>
+      <a href="#book" data-scroll class="hover:text-[#2F66D8] transition">Резерв</a>
+    </nav>
+
+    <div class="flex items-center shrink-0">
+      <a href="#book" data-scroll class="btn-couture-primary !py-2.5 !px-5 !text-[10px] sm:!text-[11px]">
+        <span>Резерв стола</span>
+        <svg class="w-3.5 h-3.5 opacity-85" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="relative z-10">
+
+  <!-- =====================================================================
+       SECTION 1: 3D WELCOME SCREEN — STATIC LIGHT-AZURE NAME + MOTION SCROLL
+  ====================================================================== -->
+  <section class="hero-scroll-wrapper" id="welcome">
+    <div class="hero-welcome-sticky">
+      <!-- Sunlit Porcelain-Azure 3D Perspective Archway in Three.js -->
+      <canvas id="hero-arch-canvas"></canvas>
+
+      <!-- Crisp Pure-White Porcelain Halo -->
+      <div class="hero-glamour-halo" id="heroHalo"></div>
+
+      <!-- Static, Luminous Light-Azure & Crisp Restaurant Name -->
+      <div class="hero-title-centerpiece" id="heroOverlay">
+        <h1 class="title-static-main" id="heroTitle" aria-label="DeMura"><span class="tl" aria-hidden="true"><span class="tl-in" style="--d:0">D</span></span><span class="tl" aria-hidden="true"><span class="tl-in" style="--d:1">e</span></span><span class="tl" aria-hidden="true"><span class="tl-in" style="--d:2">M</span></span><span class="tl" aria-hidden="true"><span class="tl-in" style="--d:3">u</span></span><span class="tl" aria-hidden="true"><span class="tl-in" style="--d:4">r</span></span><span class="tl" aria-hidden="true"><span class="tl-in" style="--d:5">a</span></span></h1>
+        <div class="title-glamour-reflection" id="heroLine" aria-hidden="true">
+          <svg viewBox="0 0 600 44">
+            <path class="orn-line" pathLength="1" d="M6 22 C70 22 118 10 182 22 C222 29 252 25 272 22"/>
+            <path class="orn-line soft" pathLength="1" d="M40 31 C100 31 150 25 214 31"/>
+            <path class="orn-line" pathLength="1" d="M594 22 C530 22 482 10 418 22 C378 29 348 25 328 22"/>
+            <path class="orn-line soft" pathLength="1" d="M560 31 C500 31 450 25 386 31"/>
+            <circle class="orn-dot" cx="6" cy="22" r="2.4"/><circle class="orn-dot" cx="594" cy="22" r="2.4"/>
+            <g transform="translate(300 22)"><g class="orn-star">
+              <path d="M0 -17 L3.6 -6.4 L14.4 -9.8 L7.4 -1 L17 3 L6.6 5 L9.6 15.6 L0 9 L-9.6 15.6 L-6.6 5 L-17 3 L-7.4 -1 L-14.4 -9.8 L-3.6 -6.4 Z" fill="#2F66D8" stroke="#183B8C" stroke-width=".8" stroke-linejoin="round"/>
+              <circle r="5.2" fill="#fff"/><circle r="2.2" fill="#1F49A6"/>
+            </g></g>
+          </svg>
+        </div>
+        <p class="hero-tagline" id="heroTagline">Ресторан · Кальянная · Porcelain &amp; Azure</p>
+      </div>
+
+      <div class="hero-flash" id="heroFlash"></div>
+
+      <!-- Whisper-Minimal Scroll Cue -->
+      <a href="#concept" data-scroll class="absolute bottom-7 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-80 hover:opacity-100 transition" id="heroScrollHint" aria-label="Листайте вниз">
+        <span class="text-[9px] uppercase tracking-[0.34em] text-[#2F66D8] font-medium">Листайте вниз</span>
+        <div class="w-[1px] h-8 bg-gradient-to-b from-[#2F66D8] to-transparent"></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 1.5: REFINED, CONCISE RESTAURANT CONCEPT (FACTUAL & POISED)
+  ====================================================================== -->
+  <section class="bg-[#FAFBFD] relative z-20" id="concept">
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal-block text-center max-w-3xl mx-auto">
+        <span class="text-[10px] uppercase tracking-[0.3em] text-[#2F66D8] font-semibold block mb-3">
+          Суть дома DeMura
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-bold text-[#122B66] leading-snug mb-5" style="font-family: var(--disp)">
+          Светлая архитектура дельфтского фарфора, кухня живого огня и камерная кальянная культура
+        </h2>
+        <p class="text-lg sm:text-xl text-[#122B66]/80 leading-relaxed" style="font-family: var(--serif)">
+          DeMura создан как дневной и вечерний оазис: вместо привычного полумрака лаунжей — пятиметровые солнечные арки, белый каррарский мрамор и ручная роспись кобальтового азулежу. Бесшумная ламинарная вентиляция сохраняет воздух абсолютно чистым, позволяя сочетать высокую гастрономию и кальянные ритуалы в одном пространстве без компромиссов.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-8 mt-12 reveal-block">
+        <div class="concept-pillar">
+          <span class="text-[10px] uppercase tracking-[0.22em] text-[#6E92CF] font-semibold block mb-1">01 · Гастрономия</span>
+          <h3 class="text-lg font-bold text-[#122B66] mb-1.5" style="font-family: var(--disp)">Угли и белый фарфор</h3>
+          <p class="text-xs sm:text-sm text-[#122B66]/70 leading-relaxed">
+            Мраморная говядина 28 дней сухой выдержки, дикая средиземноморская рыба и утренние бранчи с подачей на фарфоре ручной росписи.
+          </p>
+        </div>
+
+        <div class="concept-pillar">
+          <span class="text-[10px] uppercase tracking-[0.22em] text-[#6E92CF] font-semibold block mb-1">02 · Кальянный салон</span>
+          <h3 class="text-lg font-bold text-[#122B66] mb-1.5" style="font-family: var(--disp)">Фарфоровые колбы и чай</h3>
+          <p class="text-xs sm:text-sm text-[#122B66]/70 leading-relaxed">
+            Авторские миксы на расписных дельфтских колбах, живых фруктовых чашах и коллекционных тайваньских улунах.
+          </p>
+        </div>
+
+        <div class="concept-pillar">
+          <span class="text-[10px] uppercase tracking-[0.22em] text-[#6E92CF] font-semibold block mb-1">03 · Пространство</span>
+          <h3 class="text-lg font-bold text-[#122B66] mb-1.5" style="font-family: var(--disp)">Шесть сценариев посадки</h3>
+          <p class="text-xs sm:text-sm text-[#122B66]/70 leading-relaxed">
+            От залитой солнцем галереи у арочных окон и мраморного бара до приватной ложи с коллекцией антикварной керамики.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 2: 3D INTERIOR HALLS CAROUSEL
+  ====================================================================== -->
+  <section class="py-20 sm:py-26 px-4 sm:px-8 relative bg-[#F2F6FC] border-y border-[#CEDDF4] overflow-hidden" id="interior-3d">
+    <div id="interiorSoftAura" class="soft-aura absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full blur-[110px] pointer-events-none opacity-35" style="--aura:#93C5FD"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10 reveal-block">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <div class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.26em] font-medium text-[#2F66D8] mb-2">
+          <span class="w-2 h-2 rounded-full bg-[#2F66D8]" id="intDot"></span>
+          Светлый фарфор, мрамор и кобальт · 3D-панорама
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-bold text-[#122B66]" style="font-family: var(--disp)">Залы и архитектура</h2>
+        <p class="text-[#122B66]/65 text-xs sm:text-sm mt-2 tracking-wide">
+          Нажмите на карточку любого зала, чтобы прочитать его историю, особенности света и сценарий отдыха
+        </p>
+      </div>
+
+      <!-- Full-Width Smooth 3D Interior Carousel -->
+      <div class="carousel-3d-stage" id="interiorStage">
+        <div class="carousel-3d-track" id="interiorTrack"></div>
+      </div>
+
+      <!-- Minimalist Active Hall Caption -->
+      <div class="carousel-active-caption">
+        <span id="intActiveSub" class="text-[10px] uppercase tracking-[0.24em] text-[#6E92CF] font-medium">Центральная галерея · До 36 гостей</span>
+        <h3 id="intActiveTitle" class="text-2xl sm:text-3xl font-bold text-[#122B66] mt-0.5" style="font-family: var(--disp)">Аркада Азулежу и мраморный бар</h3>
+      </div>
+
+      <!-- Refined Luxury Controls -->
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <div class="carousel-luxury-nav">
+          <button type="button" id="intPrevBtn" class="carousel-nav-btn" aria-label="Предыдущий зал">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="flex items-center gap-3 px-2">
+            <span id="intIndexNum" class="text-[11px] font-semibold tracking-[0.22em] text-[#122B66] min-w-[20px] text-right">01</span>
+            <div class="carousel-progress-rail">
+              <div id="intProgressFill" class="carousel-progress-fill" style="width: 16.66%;"></div>
+            </div>
+            <span id="intTotalNum" class="text-[11px] font-medium tracking-[0.22em] text-[#6E92CF] min-w-[20px]">06</span>
+          </div>
+          <button type="button" id="intNextBtn" class="carousel-nav-btn" aria-label="Следующий зал">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <button type="button" id="intInspectActiveBtn" class="btn-couture-glass">
+          <span>Описание зала и атмосфера</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 3: 3D FOOD CAROUSEL
+  ====================================================================== -->
+  <section class="py-20 sm:py-26 px-4 sm:px-8 relative overflow-hidden bg-[#FAFBFD]" id="menu-3d">
+    <div id="foodSoftAura" class="soft-aura absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full blur-[110px] pointer-events-none opacity-30" style="--aura:#E5B8BE"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10 reveal-block">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <div class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.26em] font-medium text-[#2F66D8] mb-2">
+          <span class="w-2 h-2 rounded-full bg-[#8C2D38]" id="foodDot"></span>
+          Гастрономия на белом фарфоре · 3D Меню
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-bold text-[#122B66]" style="font-family: var(--disp)">Авторская кухня</h2>
+        <p class="text-[#122B66]/65 text-xs sm:text-sm mt-2 tracking-wide">
+          Нажмите на любое блюдо в 3D-карусели, чтобы открыть полный состав, граммовку и палитру ингредиентов
+        </p>
+      </div>
+
+      <!-- Full-Width Smooth 3D Dish Carousel -->
+      <div class="carousel-3d-stage" id="foodStage">
+        <div class="carousel-3d-track" id="foodTrack"></div>
+      </div>
+
+      <!-- Minimalist Active Dish Caption -->
+      <div class="carousel-active-caption">
+        <span id="foodActiveSub" class="text-[10px] uppercase tracking-[0.24em] text-[#6E92CF] font-medium">Горячее с огня · 380 г · 62,00 Br</span>
+        <h3 id="foodActiveTitle" class="text-2xl sm:text-3xl font-bold text-[#122B66] mt-0.5" style="font-family: var(--disp)">Рибай на кости</h3>
+      </div>
+
+      <!-- Refined Luxury Controls -->
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <div class="carousel-luxury-nav">
+          <button type="button" id="foodPrev" class="carousel-nav-btn" aria-label="Предыдущее блюдо">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="flex items-center gap-3 px-2">
+            <span id="foodIndexNum" class="text-[11px] font-semibold tracking-[0.22em] text-[#122B66] min-w-[20px] text-right">01</span>
+            <div class="carousel-progress-rail">
+              <div id="foodProgressFill" class="carousel-progress-fill" style="width: 16.66%;"></div>
+            </div>
+            <span id="foodTotalNum" class="text-[11px] font-medium tracking-[0.22em] text-[#6E92CF] min-w-[20px]">06</span>
+          </div>
+          <button type="button" id="foodNext" class="carousel-nav-btn" aria-label="Следующее блюдо">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <button type="button" id="foodInspectActiveBtn" class="btn-couture-glass">
+          <span>Состав и ингредиенты</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 4: 3D HOOKAH & RITUAL MENU
+  ====================================================================== -->
+  <section class="py-20 sm:py-26 px-4 sm:px-8 relative overflow-hidden bg-[#F2F6FC] border-t border-[#CEDDF4]" id="hookah-3d">
+    <div id="hookahSoftAura" class="soft-aura absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full blur-[110px] pointer-events-none opacity-35" style="--aura:#ACC6EC"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10 reveal-block">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <div class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.26em] font-medium text-[#2F66D8] mb-2">
+          <span class="w-2 h-2 rounded-full bg-[#1F49A6]" id="hookahDot"></span>
+          Фарфоровые кальяны · Smoke &amp; Lounge Menu
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-bold text-[#122B66]" style="font-family: var(--disp)">Кальянные ритуалы</h2>
+        <p class="text-[#122B66]/65 text-xs sm:text-sm mt-2 tracking-wide">
+          Нажмите на любой кальян в 3D-карусели, чтобы открыть состав чаши, табачного бленда и наполнение колбы
+        </p>
+      </div>
+
+      <!-- Full-Width Smooth 3D Hookah Carousel -->
+      <div class="carousel-3d-stage" id="hookahStage">
+        <div class="carousel-3d-track" id="hookahTrack"></div>
+      </div>
+
+      <!-- Minimalist Active Hookah Caption -->
+      <div class="carousel-active-caption">
+        <span id="hookahActiveSub" class="text-[10px] uppercase tracking-[0.24em] text-[#6E92CF] font-medium">Фирменный ритуал · 70,00 Br · Сессия ~85 мин</span>
+        <h3 id="hookahActiveTitle" class="text-2xl sm:text-3xl font-bold text-[#122B66] mt-0.5" style="font-family: var(--disp)">«Голубая Агава»</h3>
+      </div>
+
+      <!-- Refined Luxury Controls -->
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <div class="carousel-luxury-nav">
+          <button type="button" id="hookahPrev" class="carousel-nav-btn" aria-label="Предыдущий кальян">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <div class="flex items-center gap-3 px-2">
+            <span id="hookahIndexNum" class="text-[11px] font-semibold tracking-[0.22em] text-[#122B66] min-w-[20px] text-right">01</span>
+            <div class="carousel-progress-rail">
+              <div id="hookahProgressFill" class="carousel-progress-fill" style="width: 20%;"></div>
+            </div>
+            <span id="hookahTotalNum" class="text-[11px] font-medium tracking-[0.22em] text-[#6E92CF] min-w-[20px]">05</span>
+          </div>
+          <button type="button" id="hookahNext" class="carousel-nav-btn" aria-label="Следующий кальян">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <button type="button" id="hookahInspectActiveBtn" class="btn-couture-glass">
+          <span>Разбор чаши и колбы</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+        </button>
+      </div>
+      <p class="text-center text-[11px] text-[#6E92CF] mt-4">Курение вредит вашему здоровью · 18+</p>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 5: RESERVATION IN PORCELAIN MENU FRAME
+  ====================================================================== -->
+  <section class="py-20 sm:py-28 px-4 sm:px-8 relative azulejo-subtle-bg" id="book">
+    <div class="max-w-4xl mx-auto reveal-block">
+      <div class="azulejo-frame book-card rounded-3xl">
+        <svg class="corner" style="top:14px;left:14px"><use href="#azulejo-corner"/></svg>
+        <svg class="corner" style="top:14px;right:14px;transform:scaleX(-1)"><use href="#azulejo-corner"/></svg>
+        <svg class="corner" style="bottom:14px;left:14px;transform:scaleY(-1)"><use href="#azulejo-corner"/></svg>
+        <svg class="corner" style="bottom:14px;right:14px;transform:scale(-1,-1)"><use href="#azulejo-corner"/></svg>
+
+        <div class="text-center max-w-xl mx-auto mb-10">
+          <svg class="w-12 h-12 mx-auto mb-3" viewBox="0 0 80 80"><use href="#delft-crest"/></svg>
+          <span class="text-[10px] uppercase tracking-[0.3em] text-[#2F66D8] font-semibold block mb-2">DeMura · Private Concierge</span>
+          <h2 class="text-3xl sm:text-5xl font-bold text-[#122B66] mb-3" style="font-family: var(--disp)">
+            Резерв стола
+          </h2>
+          <p class="text-base sm:text-lg text-[#122B66]/75" style="font-family: var(--serif)">
+            Выберите зал у солнечных арочных окон, в сапфировых креслах у расписной колоннады или в мягкой кальянной ложе.
+          </p>
+        </div>
+
+        <form id="bookingForm" class="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
+          <label class="block">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-[#2F66D8] font-medium block mb-1.5">Ваше имя</span>
+            <input required name="name" type="text" placeholder="Александр" class="w-full px-4 py-3.5 rounded-xl bg-[#FAFBFD] border border-[#CEDDF4] text-[#122B66] placeholder-[#6E92CF]/60 focus:outline-none focus:border-[#2F66D8] transition text-sm">
+          </label>
+          <label class="block">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-[#2F66D8] font-medium block mb-1.5">Телефон</span>
+            <input required name="phone" type="tel" placeholder="+375 (29) 123-45-67" class="w-full px-4 py-3.5 rounded-xl bg-[#FAFBFD] border border-[#CEDDF4] text-[#122B66] placeholder-[#6E92CF]/60 focus:outline-none focus:border-[#2F66D8] transition text-sm">
+          </label>
+          <label class="block">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-[#2F66D8] font-medium block mb-1.5">Дата визита</span>
+            <input required name="date" id="bookDate" type="date" class="w-full px-4 py-3.5 rounded-xl bg-[#FAFBFD] border border-[#CEDDF4] text-[#122B66] focus:outline-none focus:border-[#2F66D8] transition text-sm">
+          </label>
+          <label class="block">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-[#2F66D8] font-medium block mb-1.5">Гостей</span>
+            <select name="guests" class="w-full px-4 py-3.5 rounded-xl bg-[#FAFBFD] border border-[#CEDDF4] text-[#122B66] focus:outline-none focus:border-[#2F66D8] transition text-sm">
+              <option value="2 гостя">2 гостя</option>
+              <option value="3 гостя">3 гостя</option>
+              <option value="4 гостя">4 гостя</option>
+              <option value="5–6 гостей">5–6 гостей</option>
+              <option value="Компания 8+ гостей">Компания 8+ гостей</option>
+            </select>
+          </label>
+          <label class="block sm:col-span-2">
+            <span class="text-[10px] uppercase tracking-[0.2em] text-[#2F66D8] font-medium block mb-1.5">Посадка в зале</span>
+            <select name="zone" id="bookZoneSelect" class="w-full px-4 py-3.5 rounded-xl bg-[#FAFBFD] border border-[#CEDDF4] text-[#122B66] focus:outline-none focus:border-[#2F66D8] transition text-sm">
+              <option>Аркада Азулежу и мраморный бар</option>
+              <option>Галерея у арочных окон</option>
+              <option>Сапфировый кальянный салон</option>
+              <option>Белый мраморный атриум</option>
+              <option>Ложа Дельфтского фарфора</option>
+              <option>Зимний сад и фарфоровая веранда</option>
+            </select>
+          </label>
+          <div class="sm:col-span-2 pt-3 text-center">
+            <button type="submit" class="btn-couture-primary w-full sm:w-auto min-w-[260px] !py-4">
+              <span>Подтвердить резерв стола</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </button>
+          </div>
+          <div id="bookingStatus" role="status" class="sm:col-span-2 text-center text-[#2F66D8] font-semibold text-lg min-h-[26px]" style="font-family: var(--serif)"></div>
+        </form>
+
+        <div class="book-contacts mt-8 pt-6 border-t border-[#E2ECFA] text-xs text-[#6E92CF] max-w-2xl mx-auto">
+          <span>📍 Минск, пр-т Независимости, 12</span>
+          <strong class="text-base text-[#122B66]" style="font-family: var(--disp)">+375 (29) 000-00-00</strong>
+          <span>Ежедневно 12:00 – 02:00</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- =====================================================================
+     3D INTERACTIVE DETAIL INSPECTOR MODAL (FOR HALLS, DISHES & HOOKAHS)
+====================================================================== -->
+<div class="detail-modal-backdrop" id="detailModalBackdrop" aria-hidden="true">
+  <div class="detail-modal-card azulejo-frame p-5 sm:p-8 relative" id="detailModalCard" role="dialog" aria-modal="true">
+    <button type="button" id="detailModalClose" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-white border border-[#CEDDF4] text-[#122B66] hover:bg-[#2F66D8] hover:text-white hover:border-[#2F66D8] transition flex items-center justify-center shadow-sm" aria-label="Закрыть окно">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+
+    <div class="grid md:grid-cols-12 gap-6 items-center relative z-10">
+      <div class="md:col-span-5">
+        <div class="relative rounded-2xl overflow-hidden aspect-[4/5] border border-[#CEDDF4] shadow-md bg-[#F2F6FC]">
+          <img id="modalImg" src="" alt="" class="w-full h-full object-cover" onerror="window.rwImgFail&&rwImgFail(this)">
+          <div class="rw-grade pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#122B66]/75 via-transparent to-transparent"></div>
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+            <span id="modalBadgePrice" class="px-3 py-1 rounded-full text-xs font-semibold bg-white/95 text-[#122B66]"></span>
+            <span id="modalBadgeMeta" class="text-xs font-medium text-white/90"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-7">
+        <div class="flex flex-wrap items-center gap-2 mb-2 pr-8">
+          <span id="modalCategory" class="text-[10px] uppercase tracking-[0.2em] font-semibold px-3 py-1 rounded-full bg-[#F2F6FC] text-[#2F66D8] border border-[#CEDDF4]"></span>
+          <span id="modalSwatches" class="inline-flex items-center gap-1.5 ml-1"></span>
+        </div>
+
+        <p id="modalSubtitle" class="text-[11px] uppercase tracking-[0.22em] text-[#6E92CF] font-semibold mt-2"></p>
+        <h3 id="modalTitle" class="text-2xl sm:text-4xl font-bold text-[#122B66] leading-tight mb-3" style="font-family: var(--disp)"></h3>
+        <p id="modalDesc" class="text-base sm:text-lg text-[#122B66]/85 leading-relaxed mb-3" style="font-family: var(--serif)"></p>
+
+        <!-- Bespoke Occasion / Atmosphere Note (Especially for Halls) -->
+        <div id="modalIdealForBox" class="hidden mb-4 px-3.5 py-2.5 rounded-xl bg-[#F2F6FC] border-l-2 border-[#2F66D8] text-xs text-[#122B66]/85">
+          <strong class="uppercase tracking-wider text-[10px] text-[#2F66D8] block mb-0.5">Сценарий и атмосфера:</strong>
+          <span id="modalIdealForText"></span>
+        </div>
+
+        <div id="modalIngContainer" class="p-4 sm:p-5 rounded-2xl border border-[#E2ECFA] mb-5">
+          <div class="text-[11px] uppercase tracking-[0.18em] text-[#2F66D8] font-semibold mb-3 flex items-center justify-between">
+            <span id="modalIngHeader">Из чего состоит:</span>
+            <span id="modalRightSpec" class="text-[#6E92CF] font-normal"></span>
+          </div>
+          <div id="modalIngredients" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#E2ECFA]">
+          <div>
+            <span class="text-[10px] uppercase tracking-widest text-[#6E92CF] block">DeMura Porcelain &amp; Azure</span>
+            <strong id="modalFooterPrice" class="text-2xl sm:text-3xl font-bold text-[#122B66]" style="font-family: var(--disp)"></strong>
+          </div>
+          <a href="#book" id="modalActionBtn" class="btn-couture-primary">
+            <span>Забронировать</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="border-t border-[#CEDDF4] bg-white py-8 px-4 sm:px-8 text-xs text-[#6E92CF]">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <span class="font-bold text-[#122B66] text-base" style="font-family: var(--disp)">DeMura</span>
+      <span>© 2026 · Светлый фарфорово-лазурный ресторан и кальянная</span>
+    </div>
+    <div>Все цены указаны в белорусских рублях (Br)</div>
+    <a href="#welcome" data-scroll class="btn-couture-glass !py-2 !px-4 !text-[10px]">Наверх ↑</a>
+  </div>
+</footer>
+
+<!-- Libraries: Three.js (r128) & GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script>
+/* ============================================================================
+   1. DATA FOR SUNLIT AZURE-PORCELAIN HALLS (WITH BESPOKE STORIES), DISHES & HOOKAHS
+============================================================================ */
+var INTERIOR_ITEMS = [
+  {
+    type: "hall",
+    cat: "Главный зал · Архитектурная доминанта",
+    t1: "Центральная галерея",
+    t2: "Аркада Азулежу и мраморный бар",
+    spec: "До 36 гостей · Высота свода 5,4 м",
+    price: "Парадный зал",
+    accentHex: "#2F66D8",
+    softBgHex: "#F2F6FC",
+    auraHex: "#93C5FD",
+    swatches: ["#2F66D8", "#FFFFFF", "#5286F2", "#D9E4F7"],
+    desc: "Сердце ресторана DeMura, где белоснежные своды опираются на колоннаду с ручной португальской росписью азулежу. Вдоль зала тянется шестиметровая стойка из цельного белого каррарского мрамора, за которой смешивают ботанические аперитивы и заваривают редкие улуны. Контраст прохладного камня, тонкого кобальтового узора и глубоких кресел сапфирового бархата задаёт тон всему дому.",
+    idealFor: "Вечерних ужинов в центре жизни ресторана, коктейльного аперитива у мраморной стойки и первого знакомства с кухней и кальянной картой DeMura.",
+    img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+    ingredients: [
+      { name: "Колоннада с ручной росписью кобальтовым Азулежу", color: "#2F66D8" },
+      { name: "Шестиметровый бар из белого каррарского мрамора", color: "#94A8C9" },
+      { name: "Кресла из королевского сапфирового велюра", color: "#1E40AF" },
+      { name: "Две каскадные люстры богемского хрусталя", color: "#60A5FA" },
+      { name: "Подача фарфоровых кальянов к каждому столу", color: "#2563EB" }
+    ]
+  },
+  {
+    type: "hall",
+    cat: "Панорамная линия · Естественный дневной свет",
+    t1: "Солнечная сторона",
+    t2: "Галерея у арочных окон",
+    spec: "До 24 гостей · 5 панорамных арок",
+    price: "Столы у окна",
+    accentHex: "#3B76F6",
+    softBgHex: "#F3F7FE",
+    auraHex: "#A5C8FF",
+    swatches: ["#3B76F6", "#EFECE6", "#1F49A6", "#BFDBFE"],
+    desc: "Самая солнечная локация ресторана, выстроенная вдоль пяти четырёхметровых арочных окон с видом на проспект. В простенках между окнами выложены вертикальные панно дельфтского фарфора с тонкими растительными мотивами, а мягкие диваны из сливочного букле утопают в тени раскидистых пальм. С утра и до золотого часа зал наполнен живым естественным светом.",
+    idealFor: "Утренних бранчей с яйцом Бенедикт, деловых обедов при дневном свете, эстетичных фотосессий и свиданий на закате.",
+    img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80",
+    ingredients: [
+      { name: "Пять панорамных арочных окон высотой 4,2 м", color: "#60A5FA" },
+      { name: "Глубокие диваны из тактильного сливочного букле", color: "#C8BFA8" },
+      { name: "Вертикальные фрески в технике Дельфтской росписи", color: "#1F49A6" },
+      { name: "Живые пальмы кентия в бело-кобальтовых кашпо", color: "#3B7A57" },
+      { name: "Столы из светлого матового травертина и мрамора", color: "#94A8C9" }
+    ]
+  },
+  {
+    type: "hall",
+    cat: "Кальянная гостиная · Камерная акустика",
+    t1: "Лаунж-пространство",
+    t2: "Сапфировый кальянный салон",
+    spec: "До 20 гостей · Ламинарная вытяжка",
+    price: "Лаунж-зона",
+    accentHex: "#1F49A6",
+    softBgHex: "#EEF3FB",
+    auraHex: "#8FB6F5",
+    swatches: ["#1F49A6", "#3B82F6", "#E2E8F0", "#122B66"],
+    desc: "Камерная гостиная, спроектированная специально для неспешных кальянных и чайных ритуалов. Низкая анатомическая посадка в глубоких сапфировых креслах, приглушённая акустика и направленный тёплый свет на мраморные столешницы создают ощущение закрытого клуба. Бесшумная потолочная вентиляция мгновенно забирает лишний дым, оставляя воздух свежим и прохладным.",
+    idealFor: "Долгих вечерних бесед, вдумчивой дегустации авторских кальянов на фарфоровых колбах и чайных церемоний с редкими улунами.",
+    img: "https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=900&q=80",
+    ingredients: [
+      { name: "Анатомические лаунж-кресла сапфирового бархата", color: "#1F49A6" },
+      { name: "Коллекция фарфоровых кальянов ручной росписи", color: "#2563EB" },
+      { name: "Бесшумная ламинарная система обмена воздуха", color: "#64748B" },
+      { name: "Собственная чайная станция (Анчан, Габа, Да Хун Пао)", color: "#3B82F6" },
+      { name: "Шёлковые ковры ручной работы в лазурной гамме", color: "#93C5FD" }
+    ]
+  },
+  {
+    type: "hall",
+    cat: "Торжественный свод · Хрусталь и рояль",
+    t1: "Высокий потолок",
+    t2: "Белый мраморный атриум",
+    spec: "До 30 гостей · Живой звук",
+    price: "Центральный атриум",
+    accentHex: "#2F66D8",
+    softBgHex: "#F2F6FD",
+    auraHex: "#B3CEFA",
+    swatches: ["#2F66D8", "#FFFFFF", "#93C5FD", "#1F49A6"],
+    desc: "Величественное и воздушное пространство под кессонным потолком с классической гипсовой лепниной и парадными хрустальными люстрами. Пол выложен светлым мрамором с тонким геометрическим кобальтовым интарсио. Днём хрустальные подвески наполняют зал живыми солнечными бликами, а с четверга по воскресенье здесь звучит белый кабинетный рояль.",
+    idealFor: "Праздничных ужинов, романтических вечеров под живую музыку рояля и статусных приёмов.",
+    img: "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=900&q=80",
+    ingredients: [
+      { name: "Кессонный свод с тонкой гипсовой лепниной", color: "#94A8C9" },
+      { name: "Многоярусные люстры гранёного хрусталя", color: "#3B82F6" },
+      { name: "Мраморный пол с кобальтовой инкрустацией", color: "#1F49A6" },
+      { name: "Акустический комфорт и вечерний рояль", color: "#1E40AF" }
+    ]
+  },
+  {
+    type: "hall",
+    cat: "Приватный кабинет · Коллекция керамики",
+    t1: "Экспозиция Дельфта",
+    t2: "Ложа Дельфтского фарфора",
+    spec: "До 12 гостей · Закрытая ниша",
+    price: "Приватная ложа",
+    accentHex: "#2557C7",
+    softBgHex: "#F0F4FC",
+    auraHex: "#9DC0F7",
+    swatches: ["#2557C7", "#3B82F6", "#F8FAFC", "#475569"],
+    desc: "Уединённая ложа в глубине ресторана, окружённая подсвеченными арочными нишами, где собрана частная коллекция DeMura: 48 бело-голубых ваз, амфор и блюд дельфтских и гжельских мастеров. В центре — большой овальный стол из светлого камня, скрытый от основного зала портьерами из плотного кремового льна.",
+    idealFor: "Закрытых деловых переговоров, камерных дней рождения, семейных торжеств и дегустационных ужинов с персональным сомелье.",
+    img: "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=900&q=80",
+    ingredients: [
+      { name: "Витрины с 48 предметами коллекционного фарфора", color: "#2557C7" },
+      { name: "Единый овальный стол из светлого мрамора на 12 персон", color: "#94A8C9" },
+      { name: "Тёплая музейная подсветка керамических ниш", color: "#D4A359" },
+      { name: "Индивидуальный сервис сомелье и кальян-мастера", color: "#2563EB" }
+    ]
+  },
+  {
+    type: "hall",
+    cat: "Ботаническая галерея · Средиземноморский полдень",
+    t1: "Фарфор и олива",
+    t2: "Зимний сад и фарфоровая веранда",
+    spec: "До 22 гостей · Зелёный оазис",
+    price: "Ботанический зал",
+    accentHex: "#2B6CB0",
+    softBgHex: "#F0F7FA",
+    auraHex: "#A3D5F5",
+    swatches: ["#2B6CB0", "#3B7A57", "#FFFFFF", "#1F49A6"],
+    desc: "Светлый зал-оранжерея, вдохновлённый внутренними двориками Лиссабона и Амальфи. Между столиками в крупных расписных бело-синих вазонах растут живые оливковые деревья, цитрусы и раскидистые пальмы. Мягкий рассеянный свет дарит ощущение тёплого средиземноморского полдня в любое время года.",
+    idealFor: "Неспешного дневного отдыха, лёгких цитрусовых и фруктовых кальянов, послеобеденного чая и встреч с друзьями.",
+    img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80",
+    ingredients: [
+      { name: "Крупные кобальтовые вазоны ручной росписи", color: "#1F49A6" },
+      { name: "Живые оливковые деревья и тропические пальмы", color: "#3B7A57" },
+      { name: "Светлые плетёные и велюровые кресла", color: "#2B6CB0" },
+      { name: "Мягкий рассеянный дневной свет без бликов", color: "#E0B95B" }
+    ]
+  }
+];
+
+var FOOD_ITEMS = [
+  {
+    type: "food",
+    cat: "Горячее с огня · 380 г",
+    t1: "Угольный прайм",
+    t2: "Рибай на кости",
+    kcal: "640 ккал",
+    price: "62,00 Br",
+    accentHex: "#8C2D38",
+    softBgHex: "#F9F1F2",
+    auraHex: "#E5B8BE",
+    swatches: ["#8C2D38", "#C87D55", "#5B7A52", "#2F66D8"],
+    desc: "Мраморная говядина 28 дней сухой выдержки, обжаренная на дубовых углях с корочкой из коричневого масла и молодым тимьяном. Подаётся на тёплом фарфоре с кобальтовым кантом.",
+    img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
+    ingredients: [
+      { name: "Мраморный рибай Prime (240 г)", color: "#8C2D38" },
+      { name: "Коричневое масло нуазет", color: "#C87D55" },
+      { name: "Картофель с трюфельной солью (90 г)", color: "#D4A359" },
+      { name: "Брокколини на углях", color: "#4D7C5D" },
+      { name: "Демигляс на красном вине", color: "#6E222B" },
+      { name: "Молодой тимьян и розмарин", color: "#5B7A52" }
+    ]
+  },
+  {
+    type: "food",
+    cat: "Светлая закуска · 290 г",
+    t1: "Цитрусовый посол",
+    t2: "Садовый Лосось",
+    kcal: "390 ккал",
+    price: "38,00 Br",
+    accentHex: "#C86452",
+    softBgHex: "#FAF3F0",
+    auraHex: "#EBC2B8",
+    swatches: ["#D97964", "#6B8E63", "#8FB382", "#2F66D8"],
+    desc: "Фарерский лосось слабого посола в цедре грейпфрута на подушке из хрустящей рукколы, спелого авокадо Хасс и лент свежего огурца с укропной эмульсией.",
+    img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
+    ingredients: [
+      { name: "Филе фарерского лосося (130 г)", color: "#D97964" },
+      { name: "Спелый авокадо Хасс (70 г)", color: "#6B8E63" },
+      { name: "Молодая руккола и фризе", color: "#4E7851" },
+      { name: "Ленты свежего огурца", color: "#8FB382" },
+      { name: "Заправка из лайма и укропа", color: "#9AB87A" },
+      { name: "Розовый перец и морская соль", color: "#C86452" }
+    ]
+  },
+  {
+    type: "food",
+    cat: "Море и фарфор · 340 г",
+    t1: "Белое вино и шафран",
+    t2: "Дикий Сибас",
+    kcal: "440 ккал",
+    price: "54,00 Br",
+    accentHex: "#2F66D8",
+    softBgHex: "#F1F5FC",
+    auraHex: "#B8CEEB",
+    swatches: ["#2F66D8", "#C99A49", "#6482B8", "#4E7851"],
+    desc: "Филе средиземноморского сибаса с хрустящей корочкой, припущенный фенхель, чёрная чечевица белуга и воздушный соус велюте на белом вине с шафраном.",
+    img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=800&q=80",
+    ingredients: [
+      { name: "Филе дикого сибаса (170 г)", color: "#2F66D8" },
+      { name: "Сливочный велюте с шафраном", color: "#C99A49" },
+      { name: "Чёрная чечевица Белуга (90 г)", color: "#4A5568" },
+      { name: "Карамелизированный фенхель", color: "#7B9A6D" },
+      { name: "Фермерское яйцо пашот", color: "#D69E2E" },
+      { name: "Цедра сицилийского лимона", color: "#D4A843" }
+    ]
+  },
+  {
+    type: "food",
+    cat: "Средиземноморский тапас · 260 г",
+    t1: "Инжир и страчателла",
+    t2: "Дыня & Хамон Иберико",
+    kcal: "320 ккал",
+    price: "34,00 Br",
+    accentHex: "#B56345",
+    softBgHex: "#FAF4F0",
+    auraHex: "#E8C6B4",
+    swatches: ["#D48C6A", "#9E3B42", "#557A56", "#2F66D8"],
+    desc: "Ломтики спелой медовой дыни, слайсы выдержанного хамона Иберико 24 месяцев, сливочная страчателла, свежий базилик и капля выдержанного бальзамика.",
+    img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80",
+    ingredients: [
+      { name: "Медовая дыня (140 г)", color: "#D48C6A" },
+      { name: "Хамон Иберико 24 мес. (55 г)", color: "#9E3B42" },
+      { name: "Фермерская страчателла (50 г)", color: "#6482B8" },
+      { name: "Свежий зелёный базилик", color: "#557A56" },
+      { name: "Сок лайма и оливковое масло Extra Virgin", color: "#8BA868" }
+    ]
+  },
+  {
+    type: "food",
+    cat: "Утренний бранч · 220 г",
+    t1: "На тёплой бриоши",
+    t2: "Бенедикт & Трюфель",
+    kcal: "410 ккал",
+    price: "26,00 Br",
+    accentHex: "#B8862D",
+    softBgHex: "#FAF6EE",
+    auraHex: "#E8D5A8",
+    swatches: ["#C9963B", "#D9B36C", "#5E7E58", "#2F66D8"],
+    desc: "Два фермерских яйца пашот на подрумяненной сливочной бриоши с воздушным голландским соусом, выдержанным пармезаном и лепестками чёрного трюфеля.",
+    img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800&q=80",
+    ingredients: [
+      { name: "Два фермерских яйца пашот", color: "#C9963B" },
+      { name: "Домашняя сливочная бриошь", color: "#D9B36C" },
+      { name: "Воздушный соус Голландез", color: "#E0B95B" },
+      { name: "Лепестки чёрного трюфеля", color: "#5A524C" },
+      { name: "Выдержанный Пармиджано и шнитт-лук", color: "#5E7E58" }
+    ]
+  },
+  {
+    type: "food",
+    cat: "Фарфоровый десерт · 210 г",
+    t1: "Анчан и голубика",
+    t2: "Павлова «Дельфт»",
+    kcal: "340 ккал",
+    price: "28,00 Br",
+    accentHex: "#2F66D8",
+    softBgHex: "#F1F5FC",
+    auraHex: "#B3C9EC",
+    swatches: ["#2F66D8", "#4A6FA5", "#7B68A6", "#9CB4D8"],
+    desc: "Белоснежная хрустящая меренга с кремом из маскарпоне и ванили, свежей голубикой и лазурным соусом из тайского синего чая анчан и лаванды.",
+    img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80",
+    ingredients: [
+      { name: "Белоснежная французская меренга", color: "#6482B8" },
+      { name: "Крем маскарпоне с бурбонской ванилью", color: "#8FA8D1" },
+      { name: "Свежая лесная голубика (80 г)", color: "#1F49A6" },
+      { name: "Лазурный гель из синего чая Анчан", color: "#2F66D8" },
+      { name: "Цветы крымской лаванды", color: "#7B68A6" }
+    ]
+  }
+];
+
+var HOOKAH_ITEMS = [
+  {
+    type: "hookah",
+    cat: "Фирменный ритуал · Фарфоровая колба",
+    t1: "Ритуал из карты DeMura",
+    t2: "«Голубая Агава»",
+    time: "Сессия ~85 мин",
+    price: "70,00 Br",
+    accentHex: "#2F66D8",
+    softBgHex: "#F0F5FC",
+    auraHex: "#ACC6EC",
+    swatches: ["#2F66D8", "#3B7A9E", "#5B8E7D", "#9CB4D8"],
+    desc: "Свежий нектар голубой мексиканской агавы, цедра лайма, белый жасминовый чай и прохладный лёд в бело-синей фарфоровой колбе с ручной росписью.",
+    img: "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=800&q=80",
+    ingredients: [
+      { name: "Расписная фарфоровая колба Дельфт", color: "#1F49A6" },
+      { name: "Купаж голубой агавы и цветов жасмина (55%)", color: "#2F66D8" },
+      { name: "Цедра зелёного лайма и алоэ (35%)", color: "#5B8E7D" },
+      { name: "Ботанический крио-акцент (10%)", color: "#5286F2" },
+      { name: "В колбе: синий чай Анчан, лайм и колотый лёд", color: "#3B7A9E" }
+    ]
+  },
+  {
+    type: "hookah",
+    cat: "Свежий цитрусовый ритуал · Лёгкий",
+    t1: "Солнечный полдень",
+    t2: "«Цитрусовый Фреш»",
+    time: "Сессия ~75 мин",
+    price: "58,00 Br",
+    accentHex: "#C47D38",
+    softBgHex: "#FAF5EE",
+    auraHex: "#E8CCA8",
+    swatches: ["#C47D38", "#D99B4E", "#5B8258", "#2F66D8"],
+    desc: "Искрящийся микс розового сицилийского грейпфрута, сладкого юдзу, мандариновой цедры и прохладной садовой мяты на живой грейпфрутовой чаше.",
+    img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80",
+    ingredients: [
+      { name: "Чаша из свежего розового грейпфрута", color: "#C86452" },
+      { name: "Японский цитрус Юдзу и мандарин (60%)", color: "#C47D38" },
+      { name: "Листья марокканской мяты (40%)", color: "#5B8258" },
+      { name: "В колбе: слайсы апельсина, грейпфрута и лёд", color: "#D99B4E" },
+      { name: "Подача с холодным белым чаем", color: "#6482B8" }
+    ]
+  },
+  {
+    type: "hookah",
+    cat: "Бархатный десертный пар · Средний",
+    t1: "Сливочный улун и ваниль",
+    t2: "«Сгущённый Дым»",
+    time: "Сессия ~85 мин",
+    price: "65,00 Br",
+    accentHex: "#8C6D46",
+    softBgHex: "#F9F6F0",
+    auraHex: "#DFD0B8",
+    swatches: ["#8C6D46", "#B59264", "#6482B8", "#2F66D8"],
+    desc: "Густой, обволакивающий и мягкий пар с нотами топлёного молока, тайваньского молочного улуна, мадагаскарской ванили и белого шоколада.",
+    img: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80",
+    ingredients: [
+      { name: "Купаж сливочного крема и белого шоколада (50%)", color: "#8C6D46" },
+      { name: "Тайваньский молочный улун и ваниль (40%)", color: "#B59264" },
+      { name: "Щепотка обжаренного миндаля (10%)", color: "#9E7B52" },
+      { name: "В фарфоровой колбе: ледяное кокосовое молоко", color: "#6482B8" },
+      { name: "Глазурованная белая чаша Фанел", color: "#2F66D8" }
+    ]
+  },
+  {
+    type: "hookah",
+    cat: "Пряный ягодный дарк · Крепкий",
+    t1: "Вечерний характер",
+    t2: "«Плохой Тедди»",
+    time: "Сессия ~90 мин",
+    price: "68,00 Br",
+    accentHex: "#7A3B52",
+    softBgHex: "#F9F2F5",
+    auraHex: "#DEB8C6",
+    swatches: ["#7A3B52", "#9E4F6A", "#4F6D5A", "#2F66D8"],
+    desc: "Харизматичный микс тёмного листа Burley с дикой ежевикой, чёрной смородиной, пряным ромом, медовым вереском и прохладной хвоей.",
+    img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80",
+    ingredients: [
+      { name: "Тёмный лист Burley: Дикая ежевика и смородина (55%)", color: "#7A3B52" },
+      { name: "Выдержанный пряный ром и вересковый мёд (30%)", color: "#9E6B47" },
+      { name: "Сибирская пихта и лесной холод (15%)", color: "#4F6D5A" },
+      { name: "В колбе: ягоды ежевики, розмарин и лёд", color: "#9E4F6A" },
+      { name: "Кобальтовая чаша ручной гончарной работы", color: "#2F66D8" }
+    ]
+  },
+  {
+    type: "hookah",
+    cat: "Классика сада · Лёгкий",
+    t1: "Хрустящая свежесть",
+    t2: "Зелёное Яблоко & Эвкалипт",
+    time: "Сессия ~75 мин",
+    price: "55,00 Br",
+    accentHex: "#3F7856",
+    softBgHex: "#F1F8F4",
+    auraHex: "#B6DEC4",
+    swatches: ["#3F7856", "#689E7A", "#5286F2", "#2F66D8"],
+    desc: "Сочное зелёное яблоко Гренни Смит с листом садовой мяты, эвкалиптовой свежестью и кубиками льда в расписной бело-голубой колбе.",
+    img: "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=800&q=80",
+    ingredients: [
+      { name: "Живая чаша из свежего зелёного яблока", color: "#3F7856" },
+      { name: "Светлый лист: Зелёное яблоко (65%)", color: "#689E7A" },
+      { name: "Эвкалипт и перечная мята (35%)", color: "#4A8B71" },
+      { name: "В колбе: дольки зелёного яблока, лайм и лёд", color: "#5286F2" },
+      { name: "Три кокосовых угля 25 мм", color: "#2F66D8" }
+    ]
+  }
+];
+
+/* ============================================================================
+   2. 3D INTERACTIVE DETAIL INSPECTOR MODAL (OPENS WHEN ANY ITEM IS TAPPED)
+============================================================================ */
+var modalBackdrop = document.getElementById("detailModalBackdrop");
+var modalCard = document.getElementById("detailModalCard");
+
+/* Свои фото: впишите ссылку по названию позиции, и она заменит стандартную.
+   Пример: PHOTO_OVERRIDES["Рибай на кости"] = "photos/ribeye.jpg"; */
+var PHOTO_OVERRIDES = {};
+function rwPhoto(item) { return PHOTO_OVERRIDES[item.t2] || item.img; }
+
+/* Если фото не загрузилось, рисуем фирменную азулежу-заглушку вместо битой картинки */
+function rwImgFail(img) {
+  if (img.dataset.fb) return;
+  img.dataset.fb = "1";
+  var c = document.createElement("canvas");
+  c.width = 600; c.height = 750;
+  var g = c.getContext("2d");
+  var gr = g.createLinearGradient(0, 0, 600, 750);
+  gr.addColorStop(0, "#F4F8FF"); gr.addColorStop(0.55, "#BFD3F5"); gr.addColorStop(1, "#2F66D8");
+  g.fillStyle = gr; g.fillRect(0, 0, 600, 750);
+  g.strokeStyle = "rgba(24,59,140,.28)"; g.lineWidth = 2;
+  for (var y = 0; y < 750; y += 75) {
+    for (var x = 0; x < 600; x += 75) {
+      g.strokeRect(x + 6, y + 6, 63, 63);
+      g.beginPath(); g.arc(x + 37.5, y + 37.5, 17, 0, Math.PI * 2); g.stroke();
+      g.beginPath(); g.moveTo(x + 37.5, y + 14); g.lineTo(x + 37.5, y + 61); g.moveTo(x + 14, y + 37.5); g.lineTo(x + 61, y + 37.5); g.stroke();
+    }
+  }
+  img.src = c.toDataURL("image/jpeg", 0.85);
+  rwImgOk(img);
+}
+
+function rwImgOk(img) {
+  img.classList.add("is-loaded");
+  var w = img.closest ? img.closest(".rw-photo-wrap") : null;
+  if (w) w.classList.add("is-ready");
+}
+
+function open3DDetailModal(item) {
+  if (!item || !modalBackdrop) return;
+
+  var mi = document.getElementById("modalImg"); mi.dataset.fb = ""; mi.src = rwPhoto(item);
+  document.getElementById("modalImg").alt = item.t2;
+  document.getElementById("modalBadgePrice").textContent = item.price;
+  document.getElementById("modalBadgeMeta").textContent = item.kcal || item.time || item.spec || "";
+  document.getElementById("modalCategory").textContent = item.cat;
+  document.getElementById("modalSubtitle").textContent = item.t1;
+  document.getElementById("modalTitle").textContent = item.t2;
+  document.getElementById("modalDesc").textContent = item.desc;
+  document.getElementById("modalRightSpec").textContent = item.kcal || item.time || item.spec || "";
+  document.getElementById("modalFooterPrice").textContent = item.price;
+
+  var idealBox = document.getElementById("modalIdealForBox");
+  var idealText = document.getElementById("modalIdealForText");
+  if (item.idealFor) {
+    idealText.textContent = item.idealFor;
+    idealBox.classList.remove("hidden");
+  } else {
+    idealBox.classList.add("hidden");
+  }
+
+  var headerLabel = "Из чего приготовлено блюдо:";
+  var actionLabel = "Заказать к столу";
+  if (item.type === "hookah") {
+    headerLabel = "Из чего собран кальян (чаша, табак, колба):";
+    actionLabel = "Забронировать ритуал";
+  } else if (item.type === "hall") {
+    headerLabel = "Архитектура, материалы и свет зала:";
+    actionLabel = "Забронировать этот зал";
+    var zoneSel = document.getElementById("bookZoneSelect");
+    if (zoneSel) zoneSel.value = item.t2;
+  }
+  document.getElementById("modalIngHeader").textContent = headerLabel;
+  document.getElementById("modalActionBtn").querySelector("span").textContent = actionLabel;
+
+  var ingContainer = document.getElementById("modalIngContainer");
+  ingContainer.style.backgroundColor = item.softBgHex || "#FAFBFD";
+  modalCard.style.borderColor = item.accentHex || "#1F49A6";
+
+  document.getElementById("modalSwatches").innerHTML = (item.swatches || []).map(function(hex) {
+    return '<span class="w-3.5 h-3.5 rounded-full border border-[#122B66]/15 inline-block" style="background:' + hex + '"></span>';
+  }).join("");
+
+  document.getElementById("modalIngredients").innerHTML = (item.ingredients || []).map(function(ing) {
+    return (
+      '<span class="ing-pill">' +
+        '<span class="w-2.5 h-2.5 rounded-full shrink-0" style="background:' + ing.color + '"></span>' +
+        '<span>' + ing.name + '</span>' +
+      '</span>'
+    );
+  }).join("");
+
+  modalBackdrop.classList.add("is-open");
+  modalBackdrop.setAttribute("aria-hidden", "false");
+  document.documentElement.style.overflow = "hidden";
+  modalCard.scrollTop = 0;
+
+  if (window.gsap) {
+    gsap.killTweensOf(modalCard);
+    gsap.fromTo(modalCard,
+      { opacity: 0, rotationX: -12, y: 28, scale: 0.95 },
+      { opacity: 1, rotationX: 0, y: 0, scale: 1, duration: 0.48, ease: "expo.out" }
+    );
+    var pills = modalCard.querySelectorAll(".ing-pill");
+    gsap.fromTo(pills,
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.36, stagger: 0.035, delay: 0.1, ease: "power3.out" }
+    );
+  }
+}
+
+function close3DDetailModal() {
+  if (!modalBackdrop || !modalBackdrop.classList.contains("is-open")) return;
+  modalBackdrop.classList.remove("is-open");
+  modalBackdrop.setAttribute("aria-hidden", "true");
+  document.documentElement.style.overflow = "";
+  if (window.gsap) {
+    gsap.killTweensOf(modalCard);
+    gsap.to(modalCard, { opacity: 0, y: 18, scale: 0.97, duration: 0.3, ease: "power3.in" });
+  }
+}
+
+document.getElementById("detailModalClose").addEventListener("click", close3DDetailModal);
+modalBackdrop.addEventListener("click", function(e) {
+  if (e.target === modalBackdrop) close3DDetailModal();
+});
+document.getElementById("modalActionBtn").addEventListener("click", function() {
+  close3DDetailModal();
+});
+window.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") close3DDetailModal();
+});
+
+/* ============================================================================
+   3. WELCOME 3D SCENE + STATIC TITLE + SMOOTH MOTION SCROLL PORTAL
+============================================================================ */
+var heroWebGLUpdater = null;
+var activeCarousels = [];
+
+function initWelcomeSceneAndScrollMotion() {
+  var canvas = document.getElementById("hero-arch-canvas");
+  var heroWrapper = document.getElementById("welcome");
+  var heroOverlay = document.getElementById("heroOverlay");
+  var heroHalo = document.getElementById("heroHalo");
+  var heroScrollHint = document.getElementById("heroScrollHint");
+  var heroFlash = document.getElementById("heroFlash");
+  var heroLine = document.getElementById("heroLine");
+  var heroTagline = document.getElementById("heroTagline");
+  var letters = Array.prototype.slice.call(document.querySelectorAll("#heroTitle .tl"));
+
+  if (!window.THREE || !canvas) return;
+  var reduce = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+
+  try {
+    var host = canvas.parentElement;
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false, powerPreference: "high-performance" });
+    renderer.setClearColor(0xEEF4FF, 1);
+
+    var scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0xEEF4FF, 0.03);
+    var camera = new THREE.PerspectiveCamera(45, 1, 0.1, 140);
+    camera.position.set(0, 0.2, 15);
+
+    var fogU = {
+      uFogColor: { value: new THREE.Color(0xEEF4FF) },
+      uFogNear: { value: 14 },
+      uFogFar: { value: 66 }
+    };
+    var timeU = { value: 0 };
+    var scrollU = { value: 0 };
+
+    /* ---------- 1. living azure mist (full-screen fbm shader) ---------- */
+    var mistU = {
+      uTime: timeU, uScroll: scrollU,
+      uAspect: { value: 1 }, uMouse: { value: new THREE.Vector2(0, 0) }
+    };
+    var mist = new THREE.Mesh(
+      new THREE.PlaneGeometry(2, 2),
+      new THREE.ShaderMaterial({
+        uniforms: mistU, depthTest: false, depthWrite: false,
+        vertexShader: "varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 1.0, 1.0); }",
+        fragmentShader: [
+          "uniform float uTime; uniform float uScroll; uniform float uAspect; uniform vec2 uMouse;",
+          "varying vec2 vUv;",
+          "float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }",
+          "float noise(vec2 p){ vec2 i = floor(p); vec2 f = fract(p); f = f * f * (3.0 - 2.0 * f);",
+          "  return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x), mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y); }",
+          "float fbm(vec2 p){ float v = 0.0; float a = 0.5; for (int i = 0; i < 4; i++){ v += a * noise(p); p = p * 2.02 + vec2(1.7, 9.2); a *= 0.5; } return v; }",
+          "void main(){",
+          "  vec2 p = (vUv - 0.5) * vec2(uAspect, 1.0) * 1.6 + uMouse * 0.08;",
+          "  float t = uTime * 0.04;",
+          "  vec2 q = vec2(fbm(p + t), fbm(p + vec2(5.2, 1.3) - t));",
+          "  float n = fbm(p * 1.4 + q * 1.6 + vec2(0.0, -uScroll * 1.5));",
+          "  vec3 col = mix(vec3(0.89, 0.94, 0.99), vec3(0.98, 0.99, 1.0), smoothstep(0.0, 1.0, vUv.y));",
+          "  vec3 cloud = mix(vec3(0.62, 0.76, 0.98), vec3(0.20, 0.40, 0.85), smoothstep(0.5, 0.95, n));",
+          "  float a = smoothstep(0.38, 0.85, n) * (0.40 - 0.18 * uScroll);",
+          "  col = mix(col, cloud, a);",
+          "  float glow = 1.0 - smoothstep(0.0, 0.9, length(vUv - 0.5) * 1.4);",
+          "  col = mix(col, vec3(1.0), glow * 0.35);",
+          "  gl_FragColor = vec4(col, 1.0);",
+          "}"
+        ].join("\n")
+      })
+    );
+    mist.frustumCulled = false;
+    mist.renderOrder = -10;
+    scene.add(mist);
+
+    /* ---------- 2. porcelain azulejo arches ----------
+       Каждая арка — составной портал: расписной пояс (азулежу следует изгибу арки, с антиалиасингом
+       по fwidth), внешний наличник с кобальтовым кантом, внутренний профиль-валик, замковый камень.
+       Все рёбра с фаской — на них играет свет, поэтому силуэт чёткий даже вдали. */
+    function archGeometry(R, r, H, depth, bt) {
+      var k = 0.78, pts = [], s, th;
+      pts.push(new THREE.Vector2(-R, -H));
+      pts.push(new THREE.Vector2(-R, 0));
+      for (s = 0; s <= 56; s++) {
+        th = Math.PI - (s / 56) * Math.PI;
+        pts.push(new THREE.Vector2(Math.cos(th) * R, Math.sin(th) * R * k));
+      }
+      pts.push(new THREE.Vector2(R, -H));
+      pts.push(new THREE.Vector2(r, -H));
+      pts.push(new THREE.Vector2(r, 0));
+      for (s = 0; s <= 56; s++) {
+        th = (s / 56) * Math.PI;
+        pts.push(new THREE.Vector2(Math.cos(th) * r, Math.sin(th) * r * k));
+      }
+      pts.push(new THREE.Vector2(-r, 0));
+      pts.push(new THREE.Vector2(-r, -H));
+      return bevelled(new THREE.Shape(pts), depth, bt);
+    }
+    function bevelled(shape, depth, bt) {
+      var g = new THREE.ExtrudeGeometry(shape, {
+        depth: depth, curveSegments: 1, bevelEnabled: true,
+        bevelThickness: bt, bevelSize: bt, bevelOffset: -bt, bevelSegments: 2
+      });
+      g.translate(0, 0, -depth / 2);
+      return g;
+    }
+    var keyShape = new THREE.Shape([
+      new THREE.Vector2(-0.30, 3.02), new THREE.Vector2(0.30, 3.02),
+      new THREE.Vector2(0.46, 4.02), new THREE.Vector2(-0.46, 4.02)
+    ]);
+    var geoBand = archGeometry(4.70, 4.00, 3.6, 0.70, 0.035);
+    var geoFrame = archGeometry(5.14, 4.70, 3.6, 0.46, 0.03);
+    var geoRib = archGeometry(4.00, 3.80, 3.6, 0.98, 0.03);
+    var geoKey = bevelled(keyShape, 1.08, 0.04);
+
+    var archVS = "varying vec3 vWorld; varying vec3 vN; varying vec3 vLocal; void main(){ vLocal = position; vec4 w = modelMatrix * vec4(position, 1.0); vWorld = w.xyz; vN = normalize(mat3(modelMatrix) * normal); gl_Position = projectionMatrix * viewMatrix * w; }";
+    var archFS = [
+      "varying vec3 vWorld; varying vec3 vN; varying vec3 vLocal;",
+      "uniform vec3 uFogColor; uniform float uFogNear; uniform float uFogFar; uniform float uTint; uniform float uScroll;",
+      "uniform float uR; uniform float uRin; uniform float uDepth; uniform vec2 uStripe; uniform float uTiles;",
+      "const float PI = 3.14159265;",
+      "float aa(float d, float w){ return 1.0 - smoothstep(-w, w, d); }",
+      "vec3 tileColor(vec2 p, float w){",
+      "  vec2 f = fract(p) - 0.5;",
+      "  float r = length(f); float a = atan(f.y, f.x);",
+      "  vec3 ground = vec3(0.945, 0.969, 1.0); vec3 azure = vec3(0.30, 0.50, 0.94); vec3 ink = vec3(0.09, 0.24, 0.62); vec3 mist = vec3(0.78, 0.87, 0.99);",
+      "  float wd = max(w, 0.0025);",
+      "  float petal = r - (0.235 + 0.085 * cos(8.0 * a));",
+      "  float dc = length(abs(f) - 0.5);",
+      "  vec3 c = ground;",
+      "  c = mix(c, mist, aa(r - 0.31, wd * 2.0) * 0.55);",
+      "  c = mix(c, azure, aa(petal, wd));",
+      "  c = mix(c, ink, aa(abs(petal) - 0.011, wd));",
+      "  c = mix(c, ink, aa(abs(r - 0.34) - 0.011, wd));",
+      "  c = mix(c, ground, aa(r - 0.085, wd));",
+      "  c = mix(c, ink, aa(r - 0.036, wd));",
+      "  c = mix(c, azure, aa(abs(dc - 0.27) - 0.02, wd));",
+      "  c = mix(c, azure, aa(dc - 0.085, wd));",
+      "  c = mix(c, mix(azure, ground, 0.35), aa(abs(max(abs(f.x), abs(f.y)) - 0.472) - 0.007, wd));",
+      "  return mix(c, vec3(0.72, 0.82, 0.97), smoothstep(0.22, 0.7, w));",
+      "}",
+      "void main(){",
+      "  vec3 N = normalize(vN); vec3 V = normalize(cameraPosition - vWorld);",
+      "  if (dot(N, V) < 0.0) N = -N;",
+      "  float front = step(0.9, abs(vN.z));",
+      "  float yy = max(vLocal.y, 0.0) / 0.78;",
+      "  float cr = (length(vec2(vLocal.x, yy)) - uRin) / (uR - uRin);",
+      "  vec3 base;",
+      "  if (front > 0.5) {",
+      "    if (uTiles > 0.5) {",
+      "      float th = atan(yy, vLocal.x); float Rm = 0.5 * (uR + uRin);",
+      "      float s = vLocal.y < 0.0 ? (vLocal.x > 0.0 ? vLocal.y : PI * Rm - vLocal.y) : th * Rm;",
+      "      vec2 p = vec2(s / (uR - uRin), cr);",
+      "      base = tileColor(p, max(fwidth(p.x), fwidth(p.y)));",
+      "    } else {",
+      "      base = vec3(0.975, 0.985, 1.0);",
+      "      float w = max(fwidth(cr), 0.0008);",
+      "      float l1 = aa(abs(cr - uStripe.x) - 0.05, w * 1.2);",
+      "      float l2 = aa(abs(cr - uStripe.y) - 0.022, w * 1.2);",
+      "      base = mix(base, vec3(0.14, 0.32, 0.72), clamp(l1 + l2 * 0.65, 0.0, 1.0) * step(0.0, uStripe.x));",
+      "    }",
+      "  } else if (abs(vN.z) > 0.25) {",
+      "    base = vec3(1.0);",
+      "  } else {",
+      "    float t = clamp(vLocal.z / uDepth + 0.5, 0.0, 1.0);",
+      "    base = mix(vec3(0.76, 0.85, 0.98), vec3(0.965, 0.98, 1.0), smoothstep(0.0, 1.0, t));",
+      "    base *= 0.93 + 0.07 * sin(vLocal.y * 1.3 + uTint);",
+      "  }",
+      "  vec3 L = normalize(vec3(-0.35, 0.65, 0.7));",
+      "  vec3 col = base * (0.80 + 0.20 * clamp(max(dot(N, L), 0.0) / 0.7, 0.0, 1.0));",
+      "  vec3 H = normalize(L + V);",
+      "  col += vec3(1.0) * pow(max(dot(N, H), 0.0), 70.0) * (0.10 + 0.22 * (1.0 - front));",
+      "  float fres = pow(1.0 - max(dot(N, V), 0.0), 3.0);",
+      "  col = mix(col, vec3(0.88, 0.94, 1.0), fres * 0.35);",
+      "  col *= 0.94 + 0.06 * smoothstep(-3.6, 4.5, vWorld.y);",
+      "  col += vec3(0.02, 0.04, 0.09) * (0.5 + 0.5 * sin(vWorld.y * 0.5 + uTint + uScroll * 5.0)) * front;",
+      "  float d = length(cameraPosition - vWorld);",
+      "  gl_FragColor = vec4(mix(col, uFogColor, smoothstep(uFogNear, uFogFar, d)), 1.0);",
+      "}"
+    ].join("\n");
+    function archMat(R, Rin, depth, tiles, st0, st1, tint) {
+      var m = new THREE.ShaderMaterial({
+        vertexShader: archVS, fragmentShader: archFS,
+        uniforms: {
+          uFogColor: fogU.uFogColor, uFogNear: fogU.uFogNear, uFogFar: fogU.uFogFar,
+          uTint: { value: tint || 0 }, uScroll: scrollU,
+          uR: { value: R }, uRin: { value: Rin }, uDepth: { value: depth },
+          uStripe: { value: new THREE.Vector2(st0, st1) }, uTiles: { value: tiles ? 1 : 0 }
+        }
+      });
+      m.extensions = { derivatives: true };
+      return m;
+    }
+    var matFrame = archMat(5.14, 4.70, 0.46, false, 0.12, 0.38, 0);
+    var matRib = archMat(4.00, 3.80, 0.98, false, 0.5, 0.5, 0);
+    var matKey = archMat(5.14, 4.70, 1.08, false, -1, -1, 0);
+    var arches = [], ai;
+    for (ai = 0; ai < 14; ai++) {
+      var grp = new THREE.Group();
+      grp.position.z = -ai * 3.6;
+      grp.add(new THREE.Mesh(geoBand, archMat(4.70, 4.00, 0.70, true, -1, -1, ai * 0.7)));
+      var fr = new THREE.Mesh(geoFrame, matFrame); fr.position.z = -0.12; grp.add(fr);
+      grp.add(new THREE.Mesh(geoRib, matRib));
+      grp.add(new THREE.Mesh(geoKey, matKey));
+      scene.add(grp);
+      arches.push(grp);
+    }
+
+    /* ---------- 3. tiled floor with a deep-azure runway lane ---------- */
+    var floorMat = new THREE.ShaderMaterial({
+      uniforms: { uFogColor: fogU.uFogColor, uFogNear: fogU.uFogNear, uFogFar: fogU.uFogFar },
+      vertexShader: "varying vec3 vWorld; void main(){ vec4 w = modelMatrix * vec4(position, 1.0); vWorld = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }",
+      fragmentShader: [
+        "varying vec3 vWorld; uniform vec3 uFogColor; uniform float uFogNear; uniform float uFogFar;",
+        "void main(){",
+        "  vec2 g = vWorld.xz / 1.8;",
+        "  vec2 gr = abs(fract(g - 0.5) - 0.5) / max(fwidth(g), vec2(0.0001));",
+        "  float line = 1.0 - min(min(gr.x, gr.y), 1.0);",
+        "  float lane = exp(-abs(vWorld.x) * 0.22);",
+        "  vec3 base = mix(vec3(0.93, 0.96, 1.0), vec3(0.80, 0.88, 0.99), lane);",
+        "  vec3 col = mix(base, vec3(0.20, 0.40, 0.85), line * (0.18 + 0.25 * lane));",
+        "  float sw = fwidth(vWorld.x) * 1.2; float ax = abs(vWorld.x);",
+        "  float st = (1.0 - smoothstep(0.0, sw, abs(ax - 2.45) - 0.035)) + (1.0 - smoothstep(0.0, sw, abs(ax - 2.72) - 0.012)) * 0.7;",
+        "  col = mix(col, vec3(0.12, 0.30, 0.70), clamp(st, 0.0, 1.0) * 0.5);",
+        "  float d = length(cameraPosition - vWorld);",
+        "  gl_FragColor = vec4(mix(col, uFogColor, smoothstep(uFogNear, uFogFar, d)), 1.0);",
+        "}"
+      ].join("\n")
+    });
+    floorMat.extensions = { derivatives: true };
+    var floor = new THREE.Mesh(new THREE.PlaneGeometry(44, 150), floorMat);
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.set(0, -3.6, -22);
+    scene.add(floor);
+
+    /* ---------- 4. drifting azure dust / hookah mist particles ---------- */
+    var small = window.innerWidth < 750;
+    var PN = small ? 520 : 1200;
+    var ppos = new Float32Array(PN * 3), pseed = new Float32Array(PN), pspd = new Float32Array(PN), psize = new Float32Array(PN), pi;
+    for (pi = 0; pi < PN; pi++) {
+      ppos[pi * 3] = (Math.random() - 0.5) * 20;
+      ppos[pi * 3 + 1] = Math.random() * 9.6 - 3.6;
+      ppos[pi * 3 + 2] = 14 - Math.random() * 64;
+      pseed[pi] = Math.random();
+      pspd[pi] = 0.12 + Math.random() * 0.34;
+      psize[pi] = 0.6 + Math.random() * 1.8;
+    }
+    var pgeo = new THREE.BufferGeometry();
+    pgeo.setAttribute("position", new THREE.BufferAttribute(ppos, 3));
+    pgeo.setAttribute("aSeed", new THREE.BufferAttribute(pseed, 1));
+    pgeo.setAttribute("aSpeed", new THREE.BufferAttribute(pspd, 1));
+    pgeo.setAttribute("aSize", new THREE.BufferAttribute(psize, 1));
+    var pxU = { value: Math.min(window.devicePixelRatio || 1, 1.5) };
+    var dust = new THREE.Points(pgeo, new THREE.ShaderMaterial({
+      transparent: true, depthWrite: false,
+      uniforms: { uTime: timeU, uPx: pxU },
+      vertexShader: [
+        "attribute float aSeed; attribute float aSpeed; attribute float aSize; uniform float uTime; uniform float uPx;",
+        "varying float vA; varying float vSeed;",
+        "void main(){",
+        "  vec3 p = position;",
+        "  p.y = mod(position.y + 3.6 + uTime * aSpeed, 9.6) - 3.6;",
+        "  p.x += sin(uTime * 0.25 + aSeed * 6.2831) * 0.5;",
+        "  vec4 mv = modelViewMatrix * vec4(p, 1.0);",
+        "  float d = -mv.z;",
+        "  gl_PointSize = clamp(aSize * uPx * (38.0 / max(d, 1.0)), 1.0, 70.0);",
+        "  gl_Position = projectionMatrix * mv;",
+        "  float ty = (p.y + 3.6) / 9.6;",
+        "  vA = smoothstep(0.0, 0.15, ty) * (1.0 - smoothstep(0.7, 1.0, ty)) * smoothstep(1.5, 5.0, d) * (1.0 - smoothstep(25.0, 60.0, d));",
+        "  vSeed = aSeed;",
+        "}"
+      ].join("\n"),
+      fragmentShader: [
+        "varying float vA; varying float vSeed;",
+        "void main(){",
+        "  float r = length(gl_PointCoord - 0.5);",
+        "  float a = 1.0 - smoothstep(0.0, 0.5, r); a *= a;",
+        "  vec3 col = mix(vec3(0.32, 0.53, 0.95), vec3(0.09, 0.22, 0.55), step(0.8, vSeed));",
+        "  gl_FragColor = vec4(col, a * vA * 0.5);",
+        "}"
+      ].join("\n")
+    }));
+    dust.frustumCulled = false;
+    scene.add(dust);
+
+    /* ---------- 5. floating azulejo tiles ---------- */
+    function tileTexture() {
+      var c = document.createElement("canvas"); c.width = c.height = 256;
+      var g = c.getContext("2d");
+      g.fillStyle = "#F7FAFF"; g.fillRect(0, 0, 256, 256);
+      g.strokeStyle = "#1F49A6"; g.lineWidth = 6; g.strokeRect(8, 8, 240, 240);
+      g.strokeStyle = "#5286F2"; g.lineWidth = 3; g.strokeRect(20, 20, 216, 216);
+      g.translate(128, 128); g.strokeStyle = "#183B8C"; g.fillStyle = "#2F66D8"; g.lineWidth = 3;
+      for (var i = 0; i < 8; i++) {
+        g.save(); g.rotate(i * Math.PI / 4); g.beginPath(); g.ellipse(0, -52, 16, 40, 0, 0, Math.PI * 2);
+        g.globalAlpha = 0.9; g.fill(); g.globalAlpha = 1; g.stroke(); g.restore();
+      }
+      g.beginPath(); g.arc(0, 0, 16, 0, Math.PI * 2); g.fillStyle = "#F7FAFF"; g.fill(); g.stroke();
+      var t = new THREE.CanvasTexture(c); t.anisotropy = 4; return t;
+    }
+    var TN = small ? 36 : 72, tiles = [], ti;
+    var tileMesh = new THREE.InstancedMesh(
+      new THREE.PlaneGeometry(1, 1),
+      new THREE.MeshBasicMaterial({ map: tileTexture(), side: THREE.DoubleSide, fog: true }),
+      TN
+    );
+    tileMesh.frustumCulled = false;
+    for (ti = 0; ti < TN; ti++) {
+      tiles.push({
+        x: (Math.random() < 0.5 ? -1 : 1) * (1.8 + Math.random() * 5.2),
+        y: -2.4 + Math.random() * 7.2,
+        z: 12 - Math.random() * 58,
+        s: 0.5 + Math.random() * 0.9,
+        r: 0.4 + Math.random() * 0.9,
+        p: Math.random() * 6.28
+      });
+    }
+    scene.add(tileMesh);
+    var dummy = new THREE.Object3D();
+
+    /* ---------- sizing, scroll, pointer ---------- */
+    var qualityCap = 1;                     // lowered automatically if the device can't hold 50+ fps
+    function sizeScene() {
+      var w = host.clientWidth, h = host.clientHeight;
+      var px = Math.min(window.devicePixelRatio || 1, w < 750 ? 1.5 : 2) * qualityCap;
+      renderer.setPixelRatio(px);
+      renderer.setSize(w, h, false);
+      pxU.value = px;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      mistU.uAspect.value = w / h;
+    }
+    sizeScene();
+
+    var isHeroVisible = true;
+    if ("IntersectionObserver" in window && heroWrapper) {
+      new IntersectionObserver(function(entries) {
+        isHeroVisible = entries[0].isIntersecting;
+      }, { threshold: 0 }).observe(heroWrapper);
+    }
+
+    var targetP = 0, smoothP = 0, prevP = 0, mx = 0, my = 0, smx = 0, smy = 0, intro = reduce ? 1 : 0;
+    var lastNow = performance.now(), time = 0, lastFov = 45, frameEma = 0.0167, frameCount = 0;
+
+    var maxScrollCache = 1;
+    function measureScroll() {
+      if (heroWrapper) maxScrollCache = Math.max(1, heroWrapper.offsetHeight - window.innerHeight);
+    }
+    function updateTarget() {
+      targetP = Math.max(0, Math.min(1, (window.pageYOffset || 0) / maxScrollCache));
+    }
+    window.addEventListener("scroll", updateTarget, { passive: true });
+    measureScroll(); updateTarget();
+    var resizeRaf = 0, lastW = window.innerWidth;
+    window.addEventListener("resize", function() {
+      cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(function() {
+        measureScroll();
+        /* phone URL-bar show/hide only changes height: don't rebuild the GL buffers for it */
+        if (window.innerWidth !== lastW) { lastW = window.innerWidth; sizeScene(); }
+        updateTarget();
+      });
+    });
+    window.addEventListener("pointermove", function(e) {
+      if (e.pointerType !== "mouse") return;
+      mx = (e.clientX / window.innerWidth - 0.5) * 2;
+      my = -(e.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+
+    function sstep(a, b, v) { var t = Math.max(0, Math.min(1, (v - a) / (b - a))); return t * t * (3 - 2 * t); }
+
+    heroWebGLUpdater = function() {
+      if (!isHeroVisible) return;
+      var now = performance.now();
+      var rawDt = (now - lastNow) / 1000;
+      var dt = Math.min(0.05, rawDt);
+      lastNow = now;
+      if (rawDt < 0.5) {
+        frameEma += (rawDt - frameEma) * 0.08;
+        if (++frameCount % 40 === 0 && frameEma > 0.024 && qualityCap > 0.55) {
+          qualityCap *= 0.85; sizeScene();       // quietly trade resolution for a locked frame rate
+        }
+      }
+      if (!reduce) time += dt;
+      intro = Math.min(1, intro + dt / 2.4);
+      var ie = 1 - Math.pow(1 - intro, 3);
+
+      smoothP += (targetP - smoothP) * (reduce ? 1 : (1 - Math.exp(-dt * 6)));
+      var vel = (smoothP - prevP) / Math.max(dt, 0.001);
+      prevP = smoothP;
+      var e = smoothP;
+      smx += (mx - smx) * (1 - Math.exp(-dt * 4));
+      smy += (my - smy) * (1 - Math.exp(-dt * 4));
+
+      timeU.value = time;
+      scrollU.value = e;
+      mistU.uMouse.value.set(smx, smy);
+
+      /* camera dolly through the arcade: glide, sway, FOV kick on speed, roll on drift */
+      camera.position.set(
+        smx * 0.7 + Math.sin(e * 5.0) * 0.35,
+        0.2 + e * 0.4 + smy * 0.3 + Math.sin(e * 3.0) * 0.12,
+        11.5 + (1 - ie) * 4.0 - e * 34
+      );
+      var fov = 45 + Math.min(18, Math.abs(vel) * 22) + e * 8;
+      if (Math.abs(fov - lastFov) > 0.05) { camera.fov = fov; camera.updateProjectionMatrix(); lastFov = fov; }
+      camera.lookAt(smx * 0.4, 0.1 + smy * 0.2, camera.position.z - 12);
+      camera.rotation.z += -vel * 0.05 + smx * 0.02;
+
+      /* tiles drift and turn */
+      for (var k = 0; k < TN; k++) {
+        var tl = tiles[k];
+        dummy.position.set(tl.x, tl.y + Math.sin(time * 0.5 + tl.p) * 0.25, tl.z);
+        dummy.rotation.set(time * 0.2 * tl.r + tl.p, time * 0.35 * tl.r, 0);
+        dummy.scale.set(tl.s, tl.s, 1);
+        dummy.updateMatrix();
+        tileMesh.setMatrixAt(k, dummy.matrix);
+      }
+      tileMesh.instanceMatrix.needsUpdate = true;
+
+      /* DOM choreography tied to the same smoothed progress */
+      for (var i = 0; i < letters.length; i++) {
+        var l = sstep(0, 1, Math.max(0, Math.min(1, (e * 2.1 - i * 0.08) / 0.55)));
+        letters[i].style.transform = "translate3d(0," + (-l * 64).toFixed(1) + "px," + (l * 300).toFixed(1) + "px) rotateX(" + (-l * 40).toFixed(1) + "deg)";
+        letters[i].style.opacity = Math.max(0, 1 - l * 1.15).toFixed(3);
+        letters[i].style.filter = l > 0.01 ? "blur(" + (l * 12).toFixed(1) + "px)" : "";
+      }
+      var fade = Math.max(0, 1 - e * 3.6).toFixed(3);
+      if (heroLine) heroLine.style.opacity = fade;
+      if (heroTagline) heroTagline.style.opacity = fade;
+      if (heroHalo) heroHalo.style.opacity = Math.max(0, 1 - e * 1.4).toFixed(2);
+      if (heroScrollHint) heroScrollHint.style.opacity = Math.max(0, 0.8 - e * 3).toFixed(2);
+      if (heroFlash) heroFlash.style.opacity = (sstep(0.55, 1, e) * 0.55).toFixed(3);
+
+      renderer.render(scene, camera);
+    };
+  } catch (err) {
+    if (window.console) console.warn("Hero WebGL unavailable:", err);
+    heroWebGLUpdater = null;
+  }
+}
+
+/* ============================================================================
+   4. RUNWAY-RING CAROUSEL ENGINE
+      one critically damped spring (cur -> target), every card is a pure
+      function of cur. Desktop = depth ring, phone = classic diagonal queue.
+============================================================================ */
+function rwWrap(v, n) { return ((v % n) + n) % n; }
+function rwClamp(v, a, b) { return v < a ? a : (v > b ? b : v); }
+
+function Smooth3DCarousel(options) {
+  var self = this;
+  this.items = options.items;
+  this.stage = document.getElementById(options.stageId);
+  this.track = document.getElementById(options.trackId);
+  this.n = this.items.length;
+  this.N = this.n * Math.ceil(8 / this.n);          // 6 -> 12 bodies, 5 -> 10
+  this.index = -1;
+  this.cur = 0;
+  this.target = 0;
+  this.vel = 0;
+  this.omega = 8.6;                                  // natural frequency of the critically damped spring
+  this.omegaDrag = 22;                               // stiffer while a finger / mouse holds the ring
+  this.omegaIntro = 4.6;                             // slow, cinematic entrance
+  this.entering = true;
+  this.settleTimer = 0;
+  this.speed = options.speed || 5000;
+  this.reduce = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  this.entrance = this.reduce ? 0 : 1.15;
+  this.isVisible = true;
+  this.needsRender = true;
+  this.started = false;
+  this.dirty = true;
+  this.dragging = false;
+  this.hover = false;
+  this.engaged = false;
+  this.playing = false;
+  this.elapsed = 0;
+  this.lastT = performance.now();
+  this.lastP = -1;
+  this.suppressUntil = 0;
+  this.mobile = null;
+  this.W = 0; this.H = 0; this.cardW = 0; this.cardH = 0; this.unit = 120; this.fs = 1.08;
+  this.onSelect = options.onSelect || function() {};
+  this.indexNumEl = options.indexNumId ? document.getElementById(options.indexNumId) : null;
+  this.totalNumEl = options.totalNumId ? document.getElementById(options.totalNumId) : null;
+  if (this.totalNumEl) this.totalNumEl.textContent = "0" + this.n;
+
+  this.stage.setAttribute("tabindex", "0");
+  this.stage.setAttribute("role", "region");
+  this.stage.setAttribute("aria-roledescription", "carousel");
+  this.stage.setAttribute("aria-label", options.label || "Карусель: стрелки влево и вправо меняют слайд");
+
+  var html = "";
+  for (var a = 0; a < this.N; a++) {
+    var idx = a % this.n;
+    html += '<div class="rw-body" data-a="' + a + '"' + (a >= this.n ? ' aria-hidden="true"' : "") + '>' +
+      '<span class="rw-shadow"></span>' + options.renderSlide(this.items[idx], idx) + '</div>';
+  }
+  this.track.innerHTML = html;
+  this.bodies = Array.prototype.slice.call(this.track.querySelectorAll(".rw-body"));
+  this.slides = this.bodies.map(function(b) { return b.querySelector(".carousel-3d-slide"); });
+  this.veils = this.bodies.map(function(b) { return b.querySelector(".slide-veil"); });
+  this.pans = this.bodies.map(function(b) { return b.querySelector(".rw-pan"); });
+  this.lastVis = [];
+  this.lastVeil = [];
+  Array.prototype.forEach.call(this.track.querySelectorAll("img.rw-photo"), function(im) {
+    if (im.complete && im.naturalWidth) rwImgOk(im);
+  });
+
+  this.sweep = document.createElement("span");
+  this.sweep.className = "rw-sweep";
+  this.stage.appendChild(this.sweep);
+
+  /* segmented progress ticks replace the plain progress rail */
+  this.ticks = []; this.tickFills = [];
+  var fillEl = options.progressFillId ? document.getElementById(options.progressFillId) : null;
+  this.rail = fillEl ? fillEl.parentNode : null;
+  if (this.rail) {
+    this.rail.innerHTML = "";
+    this.rail.classList.add("rw-ticks");
+    for (var j = 0; j < this.n; j++) {
+      (function(j) {
+        var t = document.createElement("button");
+        t.type = "button";
+        t.className = "rw-tick";
+        t.setAttribute("aria-label", "Показать: " + self.items[j].t2);
+        t.innerHTML = '<span class="rw-tick-bar"><i></i></span>';
+        t.addEventListener("click", function() { self.goToNearestIndex(j); });
+        self.rail.appendChild(t);
+        self.ticks.push(t);
+        self.tickFills.push(t.querySelector("i"));
+      })(j);
+    }
+  }
+
+  var prevBtn = options.prevId ? document.getElementById(options.prevId) : null;
+  var nextBtn = options.nextId ? document.getElementById(options.nextId) : null;
+  if (prevBtn) prevBtn.addEventListener("click", function() { self.prev(); });
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function() { self.next(); });
+    this.autoBtn = document.createElement("button");
+    this.autoBtn.type = "button";
+    this.autoBtn.className = "carousel-nav-btn rw-auto";
+    this.autoBtn.setAttribute("aria-label", "Автопрокрутка");
+    this.autoBtn.setAttribute("aria-pressed", "false");
+    this.autoBtn.innerHTML =
+      '<svg class="i-play" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12.5-7.5z"/></svg>' +
+      '<svg class="i-pause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 4.5h3.5v15H6.5zM14 4.5h3.5v15H14z"/></svg>';
+    nextBtn.parentNode.insertBefore(this.autoBtn, nextBtn.nextSibling);
+    this.autoBtn.addEventListener("click", function() {
+      if (!self.playing) self.engaged = false;
+      self.setPlaying(!self.playing);
+    });
+  }
+
+  /* visibility gate + intro reveal */
+  if ("IntersectionObserver" in window && !this.reduce) {
+    new IntersectionObserver(function(entries) {
+      self.isVisible = entries[0].isIntersecting;
+      if (!self.isVisible) self.setStill(true);
+      if (self.isVisible) {
+        self.needsRender = true;
+        if (!self.started) {
+          self.started = true;
+          self.elapsed = 0;
+          requestAnimationFrame(function() { requestAnimationFrame(function() { self.stage.classList.add("is-revealed"); }); });
+        }
+      }
+    }, { rootMargin: "80px", threshold: 0.2 }).observe(this.stage);
+  } else {
+    this.started = true;
+    this.stage.classList.add("is-revealed");
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function(entries) {
+        self.isVisible = entries[0].isIntersecting;
+        if (self.isVisible) self.needsRender = true; else self.setStill(true);
+      }, { rootMargin: "80px" }).observe(this.stage);
+    }
+  }
+
+  /* ---------- pointer drag / swipe ---------- */
+  var down = false, pid = null, sx = 0, sy = 0, t0 = 0, samples = [];
+  this.stage.addEventListener("dragstart", function(e) { e.preventDefault(); });
+  this.stage.addEventListener("pointerdown", function(e) {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    down = true; pid = e.pointerId; sx = e.clientX; sy = e.clientY; t0 = self.target;
+    samples = [{ x: e.clientX, t: performance.now() }];
+  }, { passive: true });
+
+  this.stage.addEventListener("pointermove", function(e) {
+    if (e.pointerType === "mouse") self.hover = true;
+    if (!down || e.pointerId !== pid) return;
+    if (e.pointerType === "mouse" && e.buttons === 0) { endDrag(e); return; }
+    var dx = e.clientX - sx, dy = e.clientY - sy;
+    if (!self.dragging) {
+      if (Math.abs(dy) > 10 && Math.abs(dy) >= Math.abs(dx)) { down = false; return; }
+      if (Math.abs(dx) > 8 && Math.abs(dx) > 1.2 * Math.abs(dy)) {
+        self.dragging = true;
+        try { self.stage.setPointerCapture(pid); } catch (err) {}
+      } else { return; }
+    }
+    samples.push({ x: e.clientX, t: performance.now() });
+    if (samples.length > 6) samples.shift();
+    self.target = t0 - dx / self.unit;
+    self.needsRender = true;
+  }, { passive: true });
+
+  function endDrag(e) {
+    if (!down) return;
+    if (e && e.pointerId !== undefined && e.pointerId !== pid) return;
+    down = false;
+    if (!self.dragging) return;
+    var dx = e ? e.clientX - sx : 0;
+    var f = samples[0], l = samples[samples.length - 1];
+    var vx = (l.t - f.t) > 0 ? (l.x - f.x) / (l.t - f.t) : 0;
+    var from = Math.round(t0), i;
+    self.dragging = false;
+    self.suppressUntil = performance.now() + 60;
+    if (self.mobile) {
+      i = (Math.abs(dx) > 30 || Math.abs(vx) > 0.3) ? from + (dx > 0 ? -1 : 1) : from;
+    } else {
+      i = Math.round(self.target - vx * 160 / self.unit);
+      if (i === from && Math.abs(vx) > 0.3) i = from + (vx < 0 ? 1 : -1);
+      i = rwClamp(i, from - 2, from + 2);
+    }
+    self.moveTo(i);
+  }
+  this.stage.addEventListener("pointerup", endDrag, { passive: true });
+  this.stage.addEventListener("pointercancel", endDrag, { passive: true });
+  this.stage.addEventListener("pointerleave", function(e) { if (e.pointerType === "mouse") self.hover = false; }, { passive: true });
+
+  /* ---------- trackpad, keyboard, click ---------- */
+  var acc = 0, wheelLock = false;
+  this.stage.addEventListener("wheel", function(e) {
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    e.preventDefault();
+    if (wheelLock) return;
+    acc += e.deltaX;
+    if (Math.abs(acc) > 45) {
+      if (acc > 0) self.next(); else self.prev();
+      acc = 0; wheelLock = true;
+      setTimeout(function() { wheelLock = false; }, 520);
+    }
+  }, { passive: false });
+
+  this.stage.addEventListener("keydown", function(e) {
+    if (e.target !== self.stage) return;
+    if (e.key === "ArrowRight") { e.preventDefault(); self.next(); }
+    else if (e.key === "ArrowLeft") { e.preventDefault(); self.prev(); }
+    else if (e.key === "Enter" || e.key === " ") { e.preventDefault(); self.engage(); open3DDetailModal(self.getActiveItem()); }
+  });
+
+  this.stage.addEventListener("click", function(e) {
+    if (performance.now() < self.suppressUntil) return;
+    var body = e.target.closest ? e.target.closest(".rw-body") : null;
+    if (!body) return;
+    var a = parseInt(body.getAttribute("data-a"), 10);
+    var r = Math.round(self.target), d;
+    if (self.mobile) d = rwWrap(a - r, self.N);
+    else { d = a - r; d = d - self.N * Math.round(d / self.N); }
+    if (d === 0) { self.engage(); open3DDetailModal(self.items[a % self.n]); }
+    else if (Math.abs(d) <= 3) self.moveTo(r + d);
+  });
+
+  this.measure();
+  this.setIndex(0, true);
+  if (!this.reduce) this.setPlaying(true); else this.updateTicks(1);
+  this.render();
+  activeCarousels.push(this);
+}
+
+/* ---------- geometry ---------- */
+Smooth3DCarousel.prototype.measure = function() {
+  var W = this.stage.clientWidth, H = this.stage.clientHeight;
+  var mobile = window.innerWidth < 750;
+  var mh = mobile ? H - 24 - 18 : Math.round((H - 34 - 18) / 1.08);
+  var cw = Math.round(Math.max(200, mh) * 0.766);
+  if (mobile) cw = Math.min(cw, Math.round(W * 0.74));
+  mh = Math.round(cw / 0.766);
+  this.W = W; this.H = H; this.cardW = cw; this.cardH = mh;
+  this.fs = mobile ? 1 : 1.08;
+  this.unit = mobile ? Math.max(90, W * 0.32 * 1.6) : Math.max(120, W * 0.3);
+  for (var a = 0; a < this.N; a++) {
+    this.bodies[a].style.width = cw + "px";
+    this.bodies[a].style.height = mh + "px";
+  }
+  if (mobile !== this.mobile) {
+    this.mobile = mobile;
+    var start = this.entrance; this.entrance = 0;
+    /* one spring drives both layouts, so switching breakpoints never snaps */
+    if (start) { this.cur = this.target - start; this.vel = 0; }
+    else if (this.reduce) { this.cur = this.target; this.vel = 0; }
+  }
+  this.dirty = false;
+};
+
+Smooth3DCarousel.prototype.positionSlides = function() {
+  this.dirty = true;
+  this.needsRender = true;
+};
+
+/* ---------- navigation ---------- */
+Smooth3DCarousel.prototype.moveTo = function(T, auto) {
+  this.target = T;
+  this.entering = false;
+  this.needsRender = true;
+  this.setStill(false);
+  this.elapsed = auto ? 0 : -3500;               // after a manual move, autoplay waits a little longer
+  this.setIndex(rwWrap(T, this.n));
+};
+Smooth3DCarousel.prototype.next = function() { this.moveTo(Math.round(this.target) + 1); };
+Smooth3DCarousel.prototype.prev = function() { this.moveTo(Math.round(this.target) - 1); };
+Smooth3DCarousel.prototype.goToStep = function(s) { this.moveTo(s); };
+Smooth3DCarousel.prototype.goToNearestIndex = function(i) {
+  var d = rwWrap(i - this.index, this.n);
+  if (d > this.n / 2) d -= this.n;
+  this.moveTo(Math.round(this.target) + d);
+};
+Smooth3DCarousel.prototype.getActiveItem = function() { return this.items[this.index]; };
+
+Smooth3DCarousel.prototype.engage = function() {
+  this.engaged = true;
+  this.setPlaying(false);
+};
+
+Smooth3DCarousel.prototype.setPlaying = function(on) {
+  this.playing = !!on && !this.reduce;
+  this.elapsed = 0;
+  if (this.autoBtn) {
+    this.autoBtn.classList.toggle("is-playing", this.playing);
+    this.autoBtn.setAttribute("aria-pressed", this.playing ? "true" : "false");
+  }
+  this.updateTicks(this.playing ? 0 : 1);
+};
+
+Smooth3DCarousel.prototype.setIndex = function(i, silent) {
+  if (i === this.index) return;
+  this.index = i;
+  var item = this.items[i];
+  for (var a = 0; a < this.N; a++) this.slides[a].classList.toggle("is-front", a % this.n === i);
+  if (this.indexNumEl) this.indexNumEl.textContent = "0" + (i + 1);
+  if (this.rail && item.accentHex) this.rail.style.setProperty("--rw-acc", item.accentHex);
+  this.updateTicks(this.playing ? 0 : 1);
+  if (!silent && !this.reduce) {
+    this.stage.classList.remove("is-sweep");
+    void this.stage.offsetWidth;
+    this.stage.classList.add("is-sweep");
+  }
+  this.onSelect(item, i);
+};
+
+Smooth3DCarousel.prototype.updateTicks = function(p) {
+  this.lastP = p;
+  for (var j = 0; j < this.ticks.length; j++) {
+    var cur = j === this.index;
+    this.ticks[j].classList.toggle("is-past", j < this.index);
+    this.ticks[j].setAttribute("aria-current", cur ? "true" : "false");
+    this.tickFills[j].style.transform = cur ? "scaleX(" + p.toFixed(3) + ")" : "";
+  }
+};
+
+/* layers are promoted instantly when motion starts, and released only after a short rest
+   (crisp text at rest, no re-raster hitch at the first frame of the next move) */
+Smooth3DCarousel.prototype.setStill = function(v) {
+  var self = this;
+  clearTimeout(this.settleTimer);
+  if (!v) {
+    if (this.still !== false) { this.still = false; this.stage.classList.remove("is-still"); }
+    return;
+  }
+  this.settleTimer = setTimeout(function() {
+    self.still = true;
+    self.stage.classList.add("is-still");
+  }, 220);
+};
+
+/* ---------- placement primitive ----------
+   haze 0..1 replaces the old CSS blur: a translucent veil costs nothing per frame,
+   while animating filter:blur() re-rasterised every card on every frame. */
+Smooth3DCarousel.prototype.place = function(a, x, bottom, scale, opacity, haze, z, yaw, pan) {
+  var el = this.bodies[a];
+  var half = this.cardW * scale / 2;
+  if (x + half < -4 || x - half > this.W + 4) opacity = 0;
+  var tilt = (yaw && Math.abs(yaw) > 0.05) ? " perspective(1500px) rotateY(" + yaw.toFixed(2) + "deg)" : "";
+  el.style.transform = "translate3d(" + x.toFixed(2) + "px," + (-bottom).toFixed(2) + "px,0) translateX(-50%)" + tilt + " scale(" + scale.toFixed(4) + ")";
+  el.style.opacity = opacity.toFixed(3);
+  el.style.zIndex = z;
+  var vis = opacity < 0.01 ? "hidden" : "visible";
+  if (this.lastVis[a] !== vis) { el.style.visibility = vis; this.lastVis[a] = vis; }
+  el.style.pointerEvents = opacity < 0.5 ? "none" : "auto";
+  var v = (rwClamp(haze, 0, 1) * 0.5).toFixed(2);
+  if (this.veils[a] && this.lastVeil[a] !== v) { this.veils[a].style.opacity = v; this.lastVeil[a] = v; }
+  if (this.pans[a] && pan !== undefined) this.pans[a].style.transform = "translate3d(" + pan.toFixed(1) + "px,0,0)";
+};
+
+/* ---------- ring (desktop) ---------- */
+Smooth3DCarousel.prototype.renderRing = function() {
+  var N = this.N, W = this.W, H = this.H, fs = this.fs;
+  var cx = 0.5 * W, R = 0.62 * W, P = 1.65 * W, floor = H - 34, horizon = 0.36 * H;
+  var step = 2 * Math.PI / N, TAU = 2 * Math.PI;
+  var panMax = this.cardW * 0.06;
+  for (var a = 0; a < N; a++) {
+    var phi = (a - this.cur) * step;
+    phi -= TAU * Math.round(phi / TAU);
+    var c = Math.cos(phi);
+    var persp = P / (P + R * (1 - c));
+    var sl = Math.abs(phi) / step;
+    var scale = persp * (1 + (fs - 1) * rwClamp(1 - sl, 0, 1));
+    var x = cx + R * Math.sin(phi) * persp;
+    var bottom = H - (horizon + (floor - horizon) * persp);
+    var haze = (sl <= 1 ? 1.8 * sl : Math.min(1.8 + (sl - 1) * 2, 6.5)) / 6.5;
+    var op = rwClamp((c + 0.55) / 0.3, 0, 1);
+    var yaw = rwClamp(phi * 180 / Math.PI * 0.5, -50, 50);
+    var pan = -rwClamp(phi / step, -2.5, 2.5) / 2.5 * panMax;
+    this.place(a, x, bottom, scale, op, haze, Math.round(scale * 1000), yaw, pan);
+  }
+};
+
+/* ---------- classic diagonal queue (phones) — pure function of the same spring ---------- */
+Smooth3DCarousel.prototype.renderClassic = function() {
+  var N = this.N, W = this.W, ax = 0.38, ay = 22, sx = 0.30, sy = 24, sr = 0.8, ex = 0.55, d = 4;
+  var v = rwClamp(this.vel, -9, 9);
+  var panMax = this.cardW * 0.06;
+  for (var a = 0; a < N; a++) {
+    var k = rwWrap(a - this.cur + 1.5, N) - 1.5;                 // [-1.5, N-1.5): the wrap seam is always invisible
+    var lagK = k > 0 ? k + v * 0.018 * Math.min(k, 4) : k;       // deeper cards trail the front one → soft wave
+    var near = rwClamp(1 - Math.abs(k) / 3, 0, 1);
+    var yaw = -v * 1.5 * near;                                   // leans into the swipe
+    var pan = -rwClamp(k, -1.5, 2.5) / 2.5 * panMax;
+    if (k < 0) {
+      var e = Math.min(-k, 1.4);
+      this.place(a, W * (ax - ex * e), ay - 22 * e, 1 + 0.14 * e, Math.max(0, 1 - 1.05 * e), Math.min(e, 1) * 0.5, 1100, yaw, pan);
+    } else {
+      var kk = lagK;
+      var op = kk <= d - 1 ? 1 - 0.13 * kk : Math.max(0, 0.61 * (d - kk));
+      this.place(a, W * (ax + sx * kk), ay + sy * kk, Math.pow(sr, kk), op, Math.min(0.9 * kk, 3.2) / 6.5 * 0.8, 1000 - Math.round(10 * k), yaw, pan);
+    }
+  }
+};
+
+Smooth3DCarousel.prototype.render = function() {
+  if (this.mobile) this.renderClassic(); else this.renderRing();
+};
+
+/* ---------- physics: exact critically damped spring (frame-rate independent) ---------- */
+Smooth3DCarousel.prototype.advance = function(dt) {
+  if (this.reduce) { this.cur = this.target; this.vel = 0; return false; }
+  var w = this.dragging ? this.omegaDrag : (this.entering ? this.omegaIntro : this.omega);
+  var x = this.cur - this.target;
+  var e = Math.exp(-w * dt);
+  var t = (this.vel + w * x) * dt;
+  this.cur = this.target + (x + t) * e;
+  this.vel = (this.vel - w * t) * e;
+  if (Math.abs(this.cur - this.target) <= 0.0004 && Math.abs(this.vel) <= 0.0006) {
+    this.cur = this.target; this.vel = 0;
+    this.entering = false;
+    return false;
+  }
+  return true;
+};
+
+Smooth3DCarousel.prototype.updateFrame = function(dt) {
+  var now = performance.now();
+  var real = Math.min(100, now - this.lastT);
+  this.lastT = now;
+  if (!this.isVisible && !this.needsRender) return;
+  if (this.dirty) { this.measure(); this.needsRender = true; }
+
+  if (!this.started) {
+    if (this.needsRender) { this.render(); this.needsRender = false; }
+    return;
+  }
+
+  /* autoplay: holds while hovering, dragging, in the modal or in a hidden tab */
+  if (this.playing && this.isVisible && !this.dragging && !this.hover && !document.hidden) {
+    var mb = document.getElementById("detailModalBackdrop");
+    if (!(mb && mb.classList.contains("is-open"))) {
+      this.elapsed += real;
+      if (this.elapsed >= this.speed) this.moveTo(Math.round(this.target) + 1, true);
+      else {
+        var p = Math.max(0, this.elapsed / this.speed);
+        if (Math.abs(p - this.lastP) > 0.004) this.updateTicks(p);
+      }
+    }
+  }
+
+  if (!this.needsRender) return;
+  var moving = this.advance(Math.min(0.05, real / 1000)) || this.dragging;
+  this.render();
+  if (moving) this.setStill(false);
+  else if (this.needsRender) { this.needsRender = false; this.setStill(true); }
+};
+
+/* ============================================================================
+   5. BUILD CARDS, SCROLL REVEALS & BIND UNIFIED GSAP TICKER
+============================================================================ */
+function buildSlideHTML(item, idx) {
+  var dotsHtml = (item.swatches || []).slice(0, 3).map(function(hex) {
+    return '<span class="w-2 h-2 rounded-full inline-block" style="background:' + hex + '"></span>';
+  }).join("");
+
+  var inspectLabel = item.type === "hall" ? "История и 3D-разбор зала" : "Состав и 3D-разбор";
+
+  return (
+    '<article class="carousel-3d-slide">' +
+      '<div class="relative w-full h-full bg-white p-2.5">' +
+        '<div class="rw-photo-wrap relative w-full h-full rounded-[18px] overflow-hidden border border-[#CEDDF4]">' +
+          '<div class="rw-pan"><img src="' + rwPhoto(item) + '" alt="' + item.t2 + '" loading="lazy" decoding="async" draggable="false" class="rw-photo w-full h-full object-cover pointer-events-none" onload="rwImgOk(this)" onerror="rwImgFail(this)"></div>' +
+          '<div class="rw-grade pointer-events-none"></div>' +
+          '<div class="absolute inset-0 bg-gradient-to-t from-[#122B66]/85 via-[#122B66]/15 to-transparent pointer-events-none"></div>' +
+          '<div class="absolute top-3 left-3 right-3 flex justify-between items-center pointer-events-none">' +
+            '<span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-white/95 text-[#122B66] border border-[#CEDDF4] shadow-sm">' + item.price + '</span>' +
+            '<span class="w-7 h-7 rounded-full bg-white/95 text-[#122B66] text-[11px] font-semibold flex items-center justify-center border border-[#CEDDF4]">0' + (idx + 1) + '</span>' +
+          '</div>' +
+          '<div class="absolute bottom-3.5 left-3.5 right-3.5 pointer-events-none">' +
+            '<span class="text-[10px] uppercase tracking-[0.2em] text-white/85 block mb-0.5">' + item.t1 + '</span>' +
+            '<strong class="text-2xl font-bold text-white block leading-tight mb-2.5" style="font-family: var(--disp)">' + item.t2 + '</strong>' +
+            '<div class="tap-inspect-badge">' +
+              '<span class="inline-flex items-center gap-1">' + dotsHtml + '</span>' +
+              '<span>' + inspectLabel + '</span>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="slide-veil"></div>' +
+      '</div>' +
+    '</article>'
+  );
+}
+
+/* подписи под каруселью: короткое затухание → мягкий выезд нового текста */
+function rwCaption(subId, titleId, subText, titleText) {
+  var sub = document.getElementById(subId), title = document.getElementById(titleId);
+  if (!sub || !title) return;
+  sub._next = subText; title._next = titleText;
+  if (!window.gsap || (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) {
+    sub.textContent = subText; title.textContent = titleText; return;
+  }
+  gsap.killTweensOf([sub, title]);
+  gsap.to([sub, title], {
+    opacity: 0, y: -6, duration: 0.18, ease: "power2.in",
+    onComplete: function() {
+      sub.textContent = sub._next; title.textContent = title._next;
+      gsap.fromTo([sub, title], { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.7, stagger: 0.07, ease: "expo.out", overwrite: true });
+    }
+  });
+}
+
+window.addEventListener("DOMContentLoaded", function() {
+  var dateInput = document.getElementById("bookDate");
+  if (dateInput) {
+    var today = new Date().toISOString().slice(0, 10);
+    dateInput.min = today;
+    dateInput.value = today;
+  }
+
+  initWelcomeSceneAndScrollMotion();
+
+  // Smooth Scroll Reveal for Sections after the Welcome Screen
+  if ("IntersectionObserver" in window) {
+    var revealBlocks = document.querySelectorAll(".reveal-block");
+    var revealIO = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
+      });
+    }, { threshold: 0.01, rootMargin: "0px 0px -6% 0px" });
+    revealBlocks.forEach(function(el) {
+      revealIO.observe(el);
+    });
+  } else {
+    document.querySelectorAll(".reveal-block").forEach(function(el) {
+      el.classList.add("is-visible");
+    });
+  }
+
+  // 1. Interior 3D Carousel
+  var intCarousel = new Smooth3DCarousel({
+    items: INTERIOR_ITEMS,
+    stageId: "interiorStage",
+    trackId: "interiorTrack",
+    progressFillId: "intProgressFill",
+    indexNumId: "intIndexNum",
+    totalNumId: "intTotalNum",
+    prevId: "intPrevBtn",
+    nextId: "intNextBtn",
+    renderSlide: buildSlideHTML,
+    onSelect: function(item) {
+      rwCaption("intActiveSub", "intActiveTitle", item.t1 + " · " + item.spec, item.t2);
+      document.getElementById("intDot").style.background = item.accentHex;
+      document.getElementById("interiorSoftAura").style.setProperty("--aura", item.auraHex);
+    }
+  });
+
+  // 2. Food 3D Carousel
+  var foodCarousel = new Smooth3DCarousel({
+    items: FOOD_ITEMS,
+    stageId: "foodStage",
+    trackId: "foodTrack",
+    progressFillId: "foodProgressFill",
+    indexNumId: "foodIndexNum",
+    totalNumId: "foodTotalNum",
+    prevId: "foodPrev",
+    nextId: "foodNext",
+    renderSlide: buildSlideHTML,
+    onSelect: function(item) {
+      rwCaption("foodActiveSub", "foodActiveTitle", item.cat + " · " + item.price, item.t2);
+      document.getElementById("foodDot").style.background = item.accentHex;
+      document.getElementById("foodSoftAura").style.setProperty("--aura", item.auraHex);
+    }
+  });
+
+  // 3. Hookah 3D Carousel
+  var hookahCarousel = new Smooth3DCarousel({
+    items: HOOKAH_ITEMS,
+    stageId: "hookahStage",
+    trackId: "hookahTrack",
+    progressFillId: "hookahProgressFill",
+    indexNumId: "hookahIndexNum",
+    totalNumId: "hookahTotalNum",
+    prevId: "hookahPrev",
+    nextId: "hookahNext",
+    renderSlide: buildSlideHTML,
+    onSelect: function(item) {
+      rwCaption("hookahActiveSub", "hookahActiveTitle", item.cat + " · " + item.price + " · " + item.time, item.t2);
+      document.getElementById("hookahDot").style.background = item.accentHex;
+      document.getElementById("hookahSoftAura").style.setProperty("--aura", item.auraHex);
+    }
+  });
+
+  window.addEventListener("resize", function() {
+    for (var i = 0; i < activeCarousels.length; i++) {
+      activeCarousels[i].positionSlides();
+    }
+  });
+
+  document.getElementById("intInspectActiveBtn").addEventListener("click", function() {
+    open3DDetailModal(intCarousel.getActiveItem());
+  });
+  document.getElementById("foodInspectActiveBtn").addEventListener("click", function() {
+    open3DDetailModal(foodCarousel.getActiveItem());
+  });
+  document.getElementById("hookahInspectActiveBtn").addEventListener("click", function() {
+    open3DDetailModal(hookahCarousel.getActiveItem());
+  });
+
+  // Single Unified Master Loop via GSAP Ticker
+  var lastTick = performance.now();
+  if (window.gsap) {
+    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.add(function() {
+      var now = performance.now();
+      var dt = Math.min(0.035, (now - lastTick) / 1000);
+      lastTick = now;
+
+      if (heroWebGLUpdater) heroWebGLUpdater();
+      for (var i = 0; i < activeCarousels.length; i++) {
+        activeCarousels[i].updateFrame(dt);
+      }
+    });
+  }
+
+  // Smooth Anchor Navigation
+  document.querySelectorAll("[data-scroll]").forEach(function(link) {
+    link.addEventListener("click", function(e) {
+      var href = link.getAttribute("href");
+      if (!href || href.charAt(0) !== "#") return;
+      var target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      var top = href === "#welcome" ? 0 : target.getBoundingClientRect().top + window.pageYOffset - 68;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    });
+  });
+
+  window.addEventListener("scroll", function() {
+    var hdr = document.getElementById("mainHeader");
+    if (window.scrollY > 24) {
+      hdr.classList.add("scrolled");
+    } else {
+      hdr.classList.remove("scrolled");
+    }
+  }, { passive: true });
+
+  // Прогрев: фото декодируются заранее, чтобы карточки не подгружались посреди анимации
+  window.addEventListener("load", function() {
+    setTimeout(function() {
+      [INTERIOR_ITEMS, FOOD_ITEMS, HOOKAH_ITEMS].forEach(function(list) {
+        list.forEach(function(it) {
+          var im = new Image();
+          im.decoding = "async";
+          im.src = rwPhoto(it);
+          if (im.decode) im.decode().catch(function() {});
+        });
+      });
+    }, 700);
+  });
+
+  // Booking form handler
+  var form = document.getElementById("bookingForm");
+  if (form) {
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      var fd = new FormData(form);
+      var status = document.getElementById("bookingStatus");
+      status.textContent = "Спасибо, " + fd.get("name") + "! Стол на " + fd.get("guests") + " (" + fd.get("date") + ", " + fd.get("zone") + ") забронирован.";
+      form.reset();
+      var d = document.getElementById("bookDate");
+      if (d) d.value = new Date().toISOString().slice(0, 10);
+    });
+  }
+});
+</script>
+</body>
+</html>
